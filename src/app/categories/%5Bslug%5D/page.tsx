@@ -44,7 +44,7 @@ export default function CategoryDetailPage({ params }: PageProps) {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex flex-col paper-pattern bg-background text-foreground transition-colors duration-300">
+      <div className="min-h-screen flex flex-col bg-[var(--background)] text-[var(--foreground)] transition-colors duration-300 relative overflow-hidden">
         <Navbar />
         <div className="flex-grow flex items-center justify-center">
           <div className="w-10 h-10 border-4 border-accent border-t-transparent rounded-full animate-spin"></div>
@@ -56,7 +56,7 @@ export default function CategoryDetailPage({ params }: PageProps) {
 
   if (!category) {
     return (
-      <div className="min-h-screen flex flex-col paper-pattern bg-background text-foreground transition-colors duration-300">
+      <div className="min-h-screen flex flex-col bg-[var(--background)] text-[var(--foreground)] transition-colors duration-300 relative overflow-hidden">
         <Navbar />
         <div className="flex-grow flex flex-col items-center justify-center py-20 text-center px-4">
           <div className="border border-card-border bg-card-bg rounded-[32px] p-10 max-w-md shadow-lg">
@@ -73,7 +73,7 @@ export default function CategoryDetailPage({ params }: PageProps) {
   }
 
   return (
-    <div className="min-h-screen flex flex-col paper-pattern bg-background text-foreground transition-colors duration-300">
+    <div className="min-h-screen flex flex-col bg-[var(--background)] text-[var(--foreground)] transition-colors duration-300 relative overflow-hidden">
       <Navbar />
 
       <main className="flex-grow max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-12 space-y-8">
@@ -126,3 +126,4 @@ export default function CategoryDetailPage({ params }: PageProps) {
     </div>
   );
 }
+

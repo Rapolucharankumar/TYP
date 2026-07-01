@@ -49,15 +49,20 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col paper-pattern bg-background text-foreground transition-colors duration-300">
+    <div className="min-h-screen flex flex-col bg-[var(--background)] text-[var(--foreground)] transition-colors duration-300 relative overflow-hidden">
+      {/* Background Glows */}
+      <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-[var(--teal)]/10 rounded-full blur-[150px] pointer-events-none" />
+      <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-[var(--cherry)]/5 rounded-full blur-[150px] pointer-events-none" />
+
       <Navbar />
 
       <main className="flex-grow max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           
           {/* Info Details Column in custom card */}
-          <div className="lg:col-span-5 border border-card-border bg-card-bg rounded-[32px] p-8 sm:p-10 shadow-md space-y-6 self-start">
-            <div>
+          <div className="lg:col-span-5 glass-panel border border-white/5 rounded-[32px] p-8 sm:p-10 shadow-lg space-y-6 self-start relative overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-br from-[var(--teal)]/5 to-transparent pointer-events-none" />
+            <div className="relative z-10">
               <span className="text-[10px] font-semibold uppercase tracking-[0.15em] text-accent bg-accent/5 px-3 py-1.5 rounded border border-accent/15">
                 Connect
               </span>
@@ -69,9 +74,11 @@ export default function ContactPage() {
               </p>
             </div>
 
-            <hr className="border-card-border/60" />
+            </div>
 
-            <div className="space-y-4 text-xs sm:text-sm">
+            <hr className="border-white/5 relative z-10" />
+
+            <div className="space-y-4 text-xs sm:text-sm relative z-10">
               <div>
                 <h3 className="font-semibold text-accent uppercase text-[10px] tracking-wider mb-1">Office Enquiries</h3>
                 <p className="text-foreground/80 font-medium">contact@youthprism.com</p>
@@ -94,7 +101,9 @@ export default function ContactPage() {
           </div>
 
           {/* Form Column inside card */}
-          <div className="lg:col-span-7 border border-card-border bg-card-bg rounded-[32px] p-6 sm:p-10 shadow-md">
+          <div className="lg:col-span-7 glass-panel border border-white/5 rounded-[32px] p-6 sm:p-10 shadow-lg relative overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-bl from-[var(--cherry)]/5 to-transparent pointer-events-none" />
+            <div className="relative z-10">
             {success ? (
               <div className="text-center py-12 space-y-4">
                 <div className="w-16 h-16 bg-accent/10 border border-accent/20 rounded-full flex items-center justify-center mx-auto text-accent shadow-inner">
@@ -211,6 +220,7 @@ export default function ContactPage() {
                 </button>
               </form>
             )}
+            </div>
           </div>
         </div>
       </main>

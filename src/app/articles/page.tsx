@@ -85,13 +85,18 @@ export default function ArticlesPage() {
   }, [searchQuery, selectedCategory, selectedTag, sortBy]);
 
   return (
-    <div className="min-h-screen flex flex-col paper-pattern bg-background text-foreground transition-colors duration-300">
+    <div className="min-h-screen flex flex-col bg-[var(--background)] text-[var(--foreground)] transition-colors duration-300 relative overflow-hidden">
+      {/* Background Glows */}
+      <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-[var(--teal)]/10 rounded-full blur-[150px] pointer-events-none" />
+      <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-[var(--lavender)]/5 rounded-full blur-[150px] pointer-events-none" />
+
       <Navbar />
 
       <main className="flex-grow max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-12 space-y-12">
         
         {/* Title inside rounded cream capsule card */}
-        <div className="border border-card-border bg-card-bg rounded-[32px] p-8 sm:p-10 shadow-md">
+        <div className="glass-panel border border-white/5 rounded-[32px] p-8 sm:p-10 shadow-lg relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-64 h-64 bg-[var(--lavender)]/10 rounded-full blur-3xl pointer-events-none" />
           <span className="text-[10px] font-black uppercase tracking-widest text-accent bg-accent/5 px-3 py-1 rounded-full border border-accent/15">
             Manifesto
           </span>
@@ -107,7 +112,7 @@ export default function ArticlesPage() {
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
           
           {/* Left panel: Filters in custom cream card */}
-          <div className="lg:col-span-1 border border-card-border bg-card-bg rounded-[32px] p-6 shadow-md space-y-6 self-start">
+          <div className="lg:col-span-1 border border-white/5 bg-white/5 glass-panel rounded-[32px] p-6 shadow-lg space-y-6 self-start">
             
             {/* Search Input */}
             <div className="space-y-2">
@@ -209,7 +214,7 @@ export default function ArticlesPage() {
                 <div className="w-10 h-10 border-4 border-accent border-t-transparent rounded-full animate-spin"></div>
               </div>
             ) : paginatedArticles.length === 0 ? (
-              <div className="flex flex-col items-center justify-center border border-card-border border-dashed rounded-[32px] bg-card-bg p-12 text-center shadow-sm">
+              <div className="flex flex-col items-center justify-center border border-white/10 border-dashed rounded-[32px] bg-white/5 glass-panel p-12 text-center shadow-lg">
                 <p className="font-serif text-xl font-bold mb-2">No articles match your selection</p>
                 <p className="text-sm text-muted mb-6">Try refining your search terms or choosing another category filter.</p>
                 <button

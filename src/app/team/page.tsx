@@ -79,7 +79,11 @@ export default function TeamPage() {
   });
 
   return (
-    <div className="min-h-screen flex flex-col paper-pattern bg-brand-cream text-brand-midnight2 transition-colors duration-300">
+    <div className="min-h-screen flex flex-col bg-[var(--background)] text-[var(--foreground)] transition-colors duration-300 relative overflow-hidden">
+      {/* Background Glows */}
+      <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-[var(--teal)]/10 rounded-full blur-[150px] pointer-events-none" />
+      <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-[var(--lavender)]/5 rounded-full blur-[150px] pointer-events-none" />
+
       <Navbar />
 
       <main className="flex-grow max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-12 space-y-12">
@@ -147,9 +151,9 @@ export default function TeamPage() {
               return (
                 <div 
                   key={author.id}
-                  className="group relative border border-brand-midnight/10 bg-brand-cream2/50 glass rounded-[32px] p-6 sm:p-8 flex flex-col justify-between shadow-md hover:shadow-xl transition-all duration-500 overflow-hidden hover-glow-butter hover:border-brand-butter"
+                  className="group relative border border-white/5 bg-white/5 glass-panel rounded-[32px] p-6 sm:p-8 flex flex-col justify-between shadow-lg hover:shadow-xl transition-all duration-500 overflow-hidden hover-glow-butter hover:border-white/10"
                 >
-                  <div className="absolute top-0 right-0 w-24 h-24 bg-brand-teal/5 rounded-full blur-2xl pointer-events-none group-hover:bg-brand-teal/10" />
+                  <div className="absolute top-0 right-0 w-24 h-24 bg-[var(--teal)]/10 rounded-full blur-2xl pointer-events-none group-hover:bg-[var(--teal)]/20" />
 
                   <div className="space-y-6">
                     {/* Top Row: Avatar & Bio */}
@@ -163,7 +167,7 @@ export default function TeamPage() {
                       </div>
                       
                       <div className="space-y-2">
-                        <h3 className="font-serif text-xl font-black text-foreground group-hover:text-brand-teal transition-colors leading-tight">
+                        <h3 className="font-serif text-xl font-black text-[var(--foreground)] group-hover:text-[var(--teal)] transition-colors leading-tight">
                           {author.name}
                         </h3>
                         <div className="flex flex-wrap gap-2 items-center">

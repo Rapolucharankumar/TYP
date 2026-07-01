@@ -36,7 +36,7 @@ export default function CategoriesPage() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col paper-pattern bg-background text-foreground transition-colors duration-300">
+    <div className="min-h-screen flex flex-col bg-[var(--background)] text-[var(--foreground)] transition-colors duration-300 relative overflow-hidden">
       <Navbar />
 
       <main className="flex-grow max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-12 space-y-12">
@@ -116,3 +116,4 @@ export default function CategoriesPage() {
     </div>
   );
 }
+

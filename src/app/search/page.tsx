@@ -61,13 +61,18 @@ export default function SearchPage() {
   const totalResults = matchedArticles.length + matchedAuthors.length + matchedCategories.length;
 
   return (
-    <div className="min-h-screen flex flex-col paper-pattern bg-background text-foreground transition-colors duration-300">
+    <div className="min-h-screen flex flex-col bg-[var(--background)] text-[var(--foreground)] transition-colors duration-300 relative overflow-hidden">
+      {/* Background Glows */}
+      <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-[var(--teal)]/10 rounded-full blur-[150px] pointer-events-none" />
+      <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-[var(--butter)]/5 rounded-full blur-[150px] pointer-events-none" />
+
       <Navbar />
 
       <main className="flex-grow max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-12 space-y-8">
         
         {/* Search Input Hero inside a rounded cream card container */}
-        <div className="border border-card-border bg-card-bg rounded-[32px] p-8 sm:p-10 shadow-md max-w-4xl mx-auto text-center space-y-6">
+        <div className="glass-panel border border-white/5 rounded-[32px] p-8 sm:p-10 shadow-lg max-w-4xl mx-auto text-center space-y-6 relative overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-t from-[var(--teal)]/5 to-transparent pointer-events-none" />
           <span className="text-[10px] font-black uppercase tracking-widest text-accent bg-accent/5 px-3 py-1 rounded-full border border-accent/15">
             Query Interface
           </span>
@@ -93,8 +98,8 @@ export default function SearchPage() {
         </div>
 
         {/* Tab Controls styled as burgundy or cream capsule bar */}
-        <div className="flex justify-center">
-          <div className="bg-card-bg border border-card-border p-1.5 rounded-full inline-flex space-x-1 shadow-sm overflow-x-auto max-w-full">
+        <div className="flex justify-center relative z-10">
+          <div className="glass-panel border border-white/5 p-1.5 rounded-full inline-flex space-x-1 shadow-md overflow-x-auto max-w-full">
             {(['all', 'articles', 'authors', 'categories'] as Tab[]).map((tab) => {
               const counts: Record<Tab, number> = {
                 all: totalResults,
@@ -128,7 +133,7 @@ export default function SearchPage() {
             <p className="text-sm">Enter search terms above to query the editorial database.</p>
           </div>
         ) : totalResults === 0 ? (
-          <div className="text-center py-16 border border-card-border border-dashed rounded-[32px] bg-card-bg shadow-sm max-w-md mx-auto">
+          <div className="text-center py-16 border border-white/10 border-dashed rounded-[32px] bg-white/5 glass-panel shadow-lg max-w-md mx-auto">
             <p className="font-serif text-lg font-bold">No matches found</p>
             <p className="text-xs text-muted mt-1">Try utilizing broader keywords or double check spelling.</p>
           </div>
@@ -163,7 +168,7 @@ export default function SearchPage() {
                 )}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                   {matchedAuthors.map((author) => (
-                    <div key={author.id} className="border border-card-border bg-card-bg p-5 rounded-[24px] flex items-center space-x-4 shadow-sm hover:shadow-md transition-shadow">
+                    <div key={author.id} className="glass-panel border border-white/5 p-5 rounded-[24px] flex items-center space-x-4 shadow-lg hover:shadow-xl hover:border-white/10 hover-glow-butter transition-all">
                       <div className="w-12 h-12 rounded-full overflow-hidden border border-card-border shadow-inner flex-shrink-0">
                         <img
                           src={author.avatar}
@@ -194,7 +199,7 @@ export default function SearchPage() {
                 )}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                   {matchedCategories.map((cat) => (
-                    <div key={cat.id} className="border border-card-border bg-card-bg p-6 rounded-[24px] space-y-4 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between">
+                    <div key={cat.id} className="glass-panel border border-white/5 p-6 rounded-[24px] space-y-4 shadow-lg hover:shadow-xl hover:border-white/10 hover-glow-teal transition-all flex flex-col justify-between">
                       <div className="space-y-2">
                         <h3 className="font-serif text-lg font-bold text-foreground leading-snug">{cat.name}</h3>
                         <p className="text-xs text-muted line-clamp-2 leading-relaxed">{cat.description}</p>

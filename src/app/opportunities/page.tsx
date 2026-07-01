@@ -84,7 +84,11 @@ export default function OpportunitiesPage() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col paper-pattern bg-background text-foreground transition-colors duration-300">
+    <div className="min-h-screen flex flex-col bg-[var(--background)] text-[var(--foreground)] transition-colors duration-300 relative overflow-hidden">
+      {/* Background Glows */}
+      <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-[var(--teal)]/10 rounded-full blur-[150px] pointer-events-none" />
+      <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-[var(--butter)]/5 rounded-full blur-[150px] pointer-events-none" />
+
       <Navbar />
 
       <main className="flex-grow max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-12 space-y-12">
@@ -102,7 +106,7 @@ export default function OpportunitiesPage() {
         </section>
 
         {/* Filter and Search controls */}
-        <div className="flex flex-col md:flex-row gap-4 justify-between items-center bg-card-bg/20 border border-border/40 glass p-4 rounded-2xl">
+        <div className="flex flex-col md:flex-row gap-4 justify-between items-center glass-panel border border-white/5 p-4 rounded-2xl relative overflow-hidden">
           <div className="flex flex-wrap gap-1.5 w-full md:w-auto">
             {(['All', 'Fellowships', 'Scholarships', 'Competitions', 'Internships', 'Research Programs', 'Conferences'] as const).map(tab => (
               <button
@@ -145,7 +149,7 @@ export default function OpportunitiesPage() {
             
             {/* Featured Opportunity Section */}
             {featuredOpp && activeTab === 'All' && searchQuery === '' && (
-              <section className="bg-card-bg/30 border border-border/40 glass rounded-[32px] p-6 sm:p-8 shadow-lg relative overflow-hidden grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+              <section className="glass-panel border border-white/5 rounded-[32px] p-6 sm:p-8 shadow-xl relative overflow-hidden grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
                 <div className="absolute top-4 left-4 flex items-center space-x-1 text-[9px] font-black text-brand-teal uppercase tracking-widest font-sans">
                   <Star className="w-3.5 h-3.5 fill-brand-teal" />
                   <span>Featured Opportunity</span>
@@ -203,7 +207,7 @@ export default function OpportunitiesPage() {
               {(activeTab === 'All' && searchQuery === '' ? normalOpps : filteredOpps).map((opp) => (
                 <div
                   key={opp.id}
-                  className="border border-border/40 bg-card-bg/25 glass rounded-[32px] p-6 sm:p-8 flex flex-col justify-between shadow-md hover:shadow-lg transition-all duration-300 h-full space-y-6"
+                  className="glass-panel border border-white/5 rounded-[32px] p-6 sm:p-8 flex flex-col justify-between shadow-lg hover:shadow-xl hover:border-white/10 hover-glow-butter transition-all duration-300 h-full space-y-6"
                 >
                   <div className="space-y-4">
                     <div className="flex justify-between items-start">
@@ -252,7 +256,7 @@ export default function OpportunitiesPage() {
         )}
 
         {/* Opportunities Newsletter pitch */}
-        <section className="border border-border/40 bg-card-bg/30 glass rounded-[32px] p-8 sm:p-10 shadow-lg text-center max-w-4xl mx-auto space-y-6">
+        <section className="glass-panel border border-white/5 rounded-[32px] p-8 sm:p-10 shadow-lg text-center max-w-4xl mx-auto space-y-6 relative overflow-hidden">
           <div className="max-w-2xl mx-auto space-y-3">
             <h2 className="font-serif text-2xl sm:text-3xl font-black text-foreground">Stay Informed on Fellowships & Prizes</h2>
             <p className="text-xs sm:text-sm text-muted leading-relaxed font-sans font-medium">

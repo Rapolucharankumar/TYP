@@ -47,13 +47,17 @@ export default function PublicationsPage() {
   const featured = ISSUES[0];
 
   return (
-    <div className="min-h-screen flex flex-col paper-pattern bg-background text-foreground transition-colors duration-300">
+    <div className="min-h-screen flex flex-col bg-[var(--background)] text-[var(--foreground)] transition-colors duration-300 relative overflow-hidden">
+      {/* Background Glows */}
+      <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-[var(--teal)]/10 rounded-full blur-[150px] pointer-events-none" />
+      <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-[var(--butter)]/5 rounded-full blur-[150px] pointer-events-none" />
+
       <Navbar />
 
       <main className="flex-grow max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-12 space-y-16">
         
         {/* Page Header */}
-        <section className="border border-border/40 bg-card-bg/40 glass rounded-[32px] p-8 sm:p-10 shadow-md relative overflow-hidden text-center max-w-4xl mx-auto space-y-3">
+        <section className="glass-panel border border-white/5 rounded-[32px] p-8 sm:p-10 shadow-lg relative overflow-hidden text-center max-w-4xl mx-auto space-y-3">
           <div className="absolute top-0 right-0 w-64 h-64 bg-brand-teal/5 rounded-full blur-3xl pointer-events-none" />
           <span className="tag text-brand-teal bg-brand-teal/10 border border-brand-teal/20 font-sans">
             Editorial Publications
@@ -68,7 +72,7 @@ export default function PublicationsPage() {
 
         {/* Featured Issue Spotlight */}
         {featured && (
-          <section className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-card-bg/30 border border-border/40 glass p-6 sm:p-8 rounded-[32px] shadow-lg relative overflow-hidden">
+          <section className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center glass-panel border border-white/5 p-6 sm:p-8 rounded-[32px] shadow-xl relative overflow-hidden">
             <div className="absolute top-4 left-4 flex items-center space-x-1 text-[9px] font-black text-brand-teal uppercase tracking-widest font-sans">
               <Star className="w-3.5 h-3.5 fill-brand-teal" />
               <span>Current Issue Spotlight</span>
@@ -165,7 +169,7 @@ export default function PublicationsPage() {
             {ISSUES.map((issue) => (
               <div 
                 key={issue.slug}
-                className="group flex flex-col sm:flex-row bg-card-bg/25 border border-border/40 glass rounded-[32px] p-6 gap-6 items-center shadow-md hover:shadow-xl transition-all duration-300"
+                className="group flex flex-col sm:flex-row glass-panel border border-white/5 rounded-[32px] p-6 gap-6 items-center shadow-md hover:shadow-xl hover:border-white/10 hover-glow-butter transition-all duration-300"
               >
                 {/* 3D Cover Book layout */}
                 <div className="w-32 h-44 flex-shrink-0 relative">

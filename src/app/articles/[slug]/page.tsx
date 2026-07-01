@@ -135,17 +135,17 @@ export default function ArticleDetailPage({ params }: PageProps) {
 
       // Handle Headings
       if (trimmed.startsWith('# ')) {
-        return <h1 key={idx} className="font-serif text-3xl sm:text-4xl font-black mt-10 mb-5 leading-tight text-brand-midnight">{trimmed.replace('# ', '')}</h1>;
+        return <h1 key={idx} className="font-serif text-3xl sm:text-4xl font-black mt-10 mb-5 leading-tight text-white drop-shadow-sm">{trimmed.replace('# ', '')}</h1>;
       }
       if (trimmed.startsWith('## ')) {
         const text = trimmed.replace('## ', '');
         const id = text.toLowerCase().replace(/[^a-z0-9]+/g, '-');
-        return <h2 key={idx} id={id} className="font-serif text-2xl sm:text-3xl font-bold mt-8 mb-4 leading-tight scroll-mt-24 border-b border-card-border/60 pb-2 text-brand-midnight">{text}</h2>;
+        return <h2 key={idx} id={id} className="font-serif text-2xl sm:text-3xl font-bold mt-8 mb-4 leading-tight scroll-mt-24 border-b border-white/10 pb-2 text-white drop-shadow-sm">{text}</h2>;
       }
       if (trimmed.startsWith('### ')) {
         const text = trimmed.replace('### ', '');
         const id = text.toLowerCase().replace(/[^a-z0-9]+/g, '-');
-        return <h3 key={idx} id={id} className="font-serif text-xl sm:text-2xl font-bold mt-6 mb-3 leading-tight scroll-mt-24 text-brand-midnight">{text}</h3>;
+        return <h3 key={idx} id={id} className="font-serif text-xl sm:text-2xl font-bold mt-6 mb-3 leading-tight scroll-mt-24 text-white drop-shadow-sm">{text}</h3>;
       }
 
       // Handle Blockquotes
@@ -155,9 +155,9 @@ export default function ArticleDetailPage({ params }: PageProps) {
         const isKeyInsight = quote.toLowerCase().includes('insight') || quote.toLowerCase().includes('key');
         const isWarning = quote.toLowerCase().includes('warning') || quote.toLowerCase().includes('danger');
         
-        let containerClass = "border-l-4 border-brand-lavender pl-6 my-8 italic text-base sm:text-lg text-brand-midnight font-serif leading-relaxed bg-brand-lavender/30 py-4 pr-4 rounded-r-2xl";
-        if (isKeyInsight) containerClass = "border border-brand-butter p-6 my-8 italic text-base sm:text-lg text-brand-midnight font-serif leading-relaxed bg-brand-butter/20 rounded-[20px] shadow-sm";
-        if (isWarning) containerClass = "border-l-4 border-brand-cherry pl-6 my-8 italic text-base sm:text-lg text-brand-cherry font-serif leading-relaxed bg-brand-cherry/10 py-4 pr-4 rounded-r-2xl";
+        let containerClass = "border-l-4 border-[var(--lavender)] pl-6 my-8 italic text-base sm:text-lg text-[var(--foreground)] font-serif leading-relaxed bg-[var(--lavender)]/5 py-4 pr-4 rounded-r-2xl";
+        if (isKeyInsight) containerClass = "border border-[var(--butter)]/30 p-6 my-8 italic text-base sm:text-lg text-[var(--foreground)] font-serif leading-relaxed bg-[var(--butter)]/5 rounded-[20px] shadow-sm";
+        if (isWarning) containerClass = "border-l-4 border-[var(--cherry)] pl-6 my-8 italic text-base sm:text-lg text-[var(--cherry)] font-serif leading-relaxed bg-[var(--cherry)]/10 py-4 pr-4 rounded-r-2xl";
 
         return (
           <blockquote key={idx} className={containerClass}>
@@ -215,15 +215,15 @@ export default function ArticleDetailPage({ params }: PageProps) {
         const firstLetter = text.charAt(0);
         const rest = text.slice(1);
         return (
-          <p key={idx} className="text-xs sm:text-sm leading-relaxed text-brand-midnight2 mb-6 text-justify">
-            <span className="font-serif text-4xl sm:text-5xl font-black float-left mr-2.5 mt-0.5 leading-[0.85] text-brand-teal">{firstLetter}</span>
+          <p key={idx} className="text-xs sm:text-sm leading-relaxed text-[var(--muted)] mb-6 text-justify">
+            <span className="font-serif text-4xl sm:text-5xl font-black float-left mr-2.5 mt-0.5 leading-[0.85] text-[var(--teal)]">{firstLetter}</span>
             {rest}
           </p>
         );
       }
 
       return (
-        <p key={idx} className="text-xs sm:text-sm leading-relaxed text-brand-midnight2 mb-6 text-justify">
+        <p key={idx} className="text-xs sm:text-sm leading-relaxed text-[var(--muted)] mb-6 text-justify">
           {trimmed}
         </p>
       );
@@ -268,7 +268,11 @@ export default function ArticleDetailPage({ params }: PageProps) {
   return (
     <>
       <JsonLd article={article} />
-      <div className="min-h-screen flex flex-col paper-pattern bg-brand-cream text-brand-midnight2 transition-colors duration-300">
+      <div className="min-h-screen flex flex-col bg-[var(--background)] text-[var(--foreground)] transition-colors duration-300 relative overflow-hidden">
+        {/* Background Glows */}
+        <div className="absolute top-0 left-[-10%] w-[50%] h-[50%] bg-[var(--teal)]/10 rounded-full blur-[150px] pointer-events-none" />
+        <div className="absolute top-[50%] right-[-10%] w-[50%] h-[50%] bg-[var(--lavender)]/5 rounded-full blur-[150px] pointer-events-none" />
+        
         <Navbar />
 
         <div className="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-12 space-y-12">
@@ -283,8 +287,9 @@ export default function ArticleDetailPage({ params }: PageProps) {
             </Link>
           </div>
 
-          <header className="border border-card-border bg-card-bg rounded-[32px] p-8 sm:p-12 shadow-md space-y-6">
-            <div className="text-center space-y-4">
+          <header className="glass-panel border border-white/5 rounded-[32px] p-8 sm:p-12 shadow-lg space-y-6 relative overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-br from-[var(--teal)]/5 to-transparent pointer-events-none" />
+            <div className="text-center space-y-4 relative z-10">
               <div>
                 <Link 
                   href={`/categories/${article.category?.slug}`}
@@ -324,7 +329,7 @@ export default function ArticleDetailPage({ params }: PageProps) {
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
             
-            <aside className="lg:col-span-3 hidden lg:block sticky top-28 space-y-8 self-start bg-card-bg border border-card-border rounded-[32px] p-6 shadow-sm">
+            <aside className="lg:col-span-3 hidden lg:block sticky top-28 space-y-8 self-start glass-panel border border-white/5 rounded-[32px] p-6 shadow-sm">
               <div className="space-y-3">
                 <h3 className="text-[10px] font-black uppercase tracking-widest text-accent">Disseminate</h3>
                 <div className="flex space-x-2">
@@ -374,7 +379,8 @@ export default function ArticleDetailPage({ params }: PageProps) {
               )}
             </aside>
 
-            <main className="lg:col-span-6 bg-card-bg border border-card-border p-6 sm:p-10 rounded-[32px] shadow-md space-y-8">
+            <main className="lg:col-span-6 glass-panel border border-white/5 p-6 sm:p-10 rounded-[32px] shadow-lg space-y-8 relative overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-b from-[var(--teal)]/5 via-transparent to-transparent pointer-events-none" />
               <div className="w-full h-[250px] sm:h-[420px] relative overflow-hidden rounded-[24px] border border-card-border/50">
                 <img
                   src={article.cover_image}
@@ -413,7 +419,7 @@ export default function ArticleDetailPage({ params }: PageProps) {
               </div>
             </main>
 
-            <aside className="lg:col-span-3 bg-card-bg border border-card-border rounded-[32px] p-6 shadow-sm space-y-6">
+            <aside className="lg:col-span-3 glass-panel border border-white/5 rounded-[32px] p-6 shadow-sm space-y-6">
               <div className="border-b border-card-border/60 pb-3">
                 <h3 className="text-[10px] font-black uppercase tracking-widest text-accent">Related Analysis</h3>
               </div>
@@ -449,7 +455,7 @@ export default function ArticleDetailPage({ params }: PageProps) {
               {prevArticle ? (
                 <Link 
                   href={`/articles/${prevArticle.slug}`} 
-                  className="group flex items-center justify-between p-5 border border-card-border bg-card-bg hover:shadow-md rounded-[24px] transition-all text-left cursor-pointer"
+                  className="group flex items-center justify-between p-5 glass-panel border border-white/5 hover:border-white/10 hover:shadow-xl hover-glow-butter rounded-[24px] transition-all text-left cursor-pointer"
                 >
                   <div className="flex items-center space-x-3">
                     <ChevronLeft className="w-6 h-6 text-accent group-hover:-translate-x-1 transition-transform" />
@@ -466,7 +472,7 @@ export default function ArticleDetailPage({ params }: PageProps) {
               {nextArticle && (
                 <Link 
                   href={`/articles/${nextArticle.slug}`} 
-                  className="group flex items-center justify-between p-5 border border-card-border bg-card-bg hover:shadow-md rounded-[24px] transition-all text-right cursor-pointer"
+                  className="group flex items-center justify-between p-5 glass-panel border border-white/5 hover:border-white/10 hover:shadow-xl hover-glow-butter rounded-[24px] transition-all text-right cursor-pointer"
                 >
                   <div className="flex items-center space-x-3 ml-auto">
                     <div>

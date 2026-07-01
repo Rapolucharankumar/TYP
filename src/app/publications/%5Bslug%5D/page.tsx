@@ -222,7 +222,7 @@ export default function IssueReaderPage({ params }: { params: Params }) {
   const activeChapter = issue.chapters.find(c => c.id === activeChapterId) || issue.chapters[0];
 
   return (
-    <div className="min-h-screen flex flex-col paper-pattern bg-background text-foreground transition-colors duration-300">
+    <div className="min-h-screen flex flex-col bg-[var(--background)] text-[var(--foreground)] transition-colors duration-300 relative overflow-hidden">
       
       {/* Scroll indicator ribbon */}
       <div className="fixed top-0 left-0 right-0 h-1 bg-border/20 z-[60]">
@@ -393,3 +393,4 @@ export default function IssueReaderPage({ params }: { params: Params }) {
     </div>
   );
 }
+
