@@ -74,8 +74,6 @@ export default function ContactPage() {
               </p>
             </div>
 
-            </div>
-
             <hr className="border-white/5 relative z-10" />
 
             <div className="space-y-4 text-xs sm:text-sm relative z-10">
