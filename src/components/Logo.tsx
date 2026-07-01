@@ -40,7 +40,7 @@ export default function Logo({ variant = 'mark', size = 'md', className = '' }: 
           <linearGradient id="prism-gradient" x1="50%" y1="0%" x2="50%" y2="100%">
             <stop offset="0%" stopColor="var(--butter)" />
             <stop offset="50%" stopColor="var(--lavender)" />
-            <stop offset="100%" stopColor="var(--color-brand-teal)" />
+            <stop offset="100%" stopColor="var(--teal)" />
           </linearGradient>
         </defs>
         <polygon points="28,3 53,53 3,53" fill="none" stroke="url(#prism-gradient)" strokeWidth="1.2" />
@@ -58,7 +58,7 @@ export default function Logo({ variant = 'mark', size = 'md', className = '' }: 
         {/* Left vertex: Lavender */}
         <circle cx="3" cy="53" r="1.6" fill="var(--lavender)" />
         {/* Right vertex: Growth Teal */}
-        <circle cx="53" cy="53" r="1.6" fill="var(--color-brand-teal)" />
+        <circle cx="53" cy="53" r="1.6" fill="var(--teal)" />
       </svg>
     );
   };
