@@ -62,25 +62,31 @@ const DEFAULT_CATEGORIES: Category[] = [
     id: "cat-tech",
     name: "Technology",
     slug: "technology",
-    description: "Deconstructing autonomous infrastructure, microchips supply lines, computing grids, and artificial intelligence regulations."
+    description: "Algorithmic computing, AI risk profiles, and semiconductor production."
   },
   {
     id: "cat-policy",
     name: "Policy",
     slug: "policy",
-    description: "Analyzing the legislative framework, legal governance, and regulatory standards shaping sovereign digital states."
+    description: "Legislative acts, antitrust codes, and digital sovereignty frameworks."
+  },
+  {
+    id: "cat-geopolitics",
+    name: "Geopolitics",
+    slug: "geopolitics",
+    description: "Maritime security, border sovereign conflicts, and mineral supply wars."
+  },
+  {
+    id: "cat-economics",
+    name: "Economics",
+    slug: "economics",
+    description: "Trade embargoes, intellectual asset rents, and international pricing models."
   },
   {
     id: "cat-healthcare",
     name: "Healthcare",
     slug: "healthcare",
-    description: "Investigating health sovereignty, clinical equity, pharmaceutical global monopolies, and pandemic architectures."
-  },
-  {
-    id: "cat-global",
-    name: "Global Affairs",
-    slug: "global-affairs",
-    description: "Examining international border disputes, diplomatic alliances, resource conflicts, and changing geopolitical treaties."
+    description: "Global access consortia, pandemic security, and vaccine patent waivers."
   }
 ];
 
@@ -142,7 +148,7 @@ From Quad taskforces to localized maritime cooperation agreements, nations are p
     status: "published",
     featured: false,
     author_id: "auth-kabir",
-    category_id: "cat-global",
+    category_id: "cat-geopolitics",
     published_at: "2026-06-03T10:00:00.000Z",
     created_at: "2026-06-03T10:00:00.000Z",
     views: 3120
@@ -378,7 +384,7 @@ class LocalDB {
   }
 
   getCategories(): Category[] {
-    return this.getStorageItem('categories', DEFAULT_CATEGORIES);
+    return this.getStorageItem('categories_v2', DEFAULT_CATEGORIES);
   }
 
   getCategoryBySlug(slug: string): Category | undefined {
@@ -392,7 +398,7 @@ class LocalDB {
       id: `cat-${Date.now()}`
     };
     categories.push(newCategory);
-    this.setStorageItem('categories', categories);
+    this.setStorageItem('categories_v2', categories);
     return newCategory;
   }
 
@@ -401,14 +407,14 @@ class LocalDB {
     const index = categories.findIndex(c => c.id === id);
     if (index === -1) throw new Error('Category not found');
     categories[index] = { ...categories[index], ...data };
-    this.setStorageItem('categories', categories);
+    this.setStorageItem('categories_v2', categories);
     return categories[index];
   }
 
   deleteCategory(id: string): void {
     let categories = this.getCategories();
     categories = categories.filter(c => c.id !== id);
-    this.setStorageItem('categories', categories);
+    this.setStorageItem('categories_v2', categories);
   }
 
   getTags(): Tag[] {
