@@ -37,28 +37,33 @@ export default function Logo({ variant = 'mark', size = 'md', className = '' }: 
         className="flex-shrink-0"
       >
         <defs>
-          <linearGradient id="prism-gradient" x1="50%" y1="0%" x2="50%" y2="100%">
-            <stop offset="0%" stopColor="var(--butter)" />
-            <stop offset="50%" stopColor="var(--lavender)" />
-            <stop offset="100%" stopColor="var(--teal)" />
+          <linearGradient id="prism-edges" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor="var(--foreground)" stopOpacity="1" />
+            <stop offset="100%" stopColor="var(--foreground)" stopOpacity="0.3" />
           </linearGradient>
         </defs>
-        <polygon points="28,3 53,53 3,53" fill="none" stroke="url(#prism-gradient)" strokeWidth="1.2" />
-        <line
-          x1="28"
-          y1="3"
-          x2="28"
-          y2="53"
-          stroke="var(--lavender)"
-          strokeWidth="0.6"
-          strokeDasharray="3,4"
+        
+        {/* Main Prism Triangle */}
+        <polygon 
+          points="28,4 52,52 4,52" 
+          fill="rgba(255,255,255,0.03)" 
+          stroke="url(#prism-edges)" 
+          strokeWidth="1.5" 
         />
-        {/* Top vertex: Gold */}
-        <circle cx="28" cy="3" r="2.5" fill="var(--butter)" />
-        {/* Left vertex: Lavender */}
-        <circle cx="3" cy="53" r="1.6" fill="var(--lavender)" />
-        {/* Right vertex: Growth Teal */}
-        <circle cx="53" cy="53" r="1.6" fill="var(--teal)" />
+        
+        {/* Interior Refraction Lines (creating a 3D effect) */}
+        <path 
+          d="M28,4 L28,34 M4,52 L28,34 M52,52 L28,34" 
+          stroke="var(--foreground)" 
+          strokeWidth="0.75" 
+          strokeOpacity="0.4"
+        />
+        
+        {/* Subtle glowing vertex points */}
+        <circle cx="28" cy="4" r="1.5" fill="var(--foreground)" opacity="0.9" />
+        <circle cx="4" cy="52" r="1.5" fill="var(--foreground)" opacity="0.6" />
+        <circle cx="52" cy="52" r="1.5" fill="var(--foreground)" opacity="0.6" />
+        <circle cx="28" cy="34" r="1" fill="var(--foreground)" opacity="0.5" />
       </svg>
     );
   };
