@@ -1,0 +1,3345 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Youth Prism — Breaking Down the Spectrum of Change</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;0,900;1,400;1,700&family=Inter:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600;1,700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --midnight: #05163B;
+            --midnight2: #0a1f4e;
+            --cream: #FAF7F0;
+            --cream2: #F5F0E8;
+            --butter: #F7E7A1;
+            --butter2: #E8D47C;
+            --sand: #E9DFC3;
+            --lavender: #E6DDF7;
+            --teal: #0B5A47;
+            --teal-light: #BDE7D9;
+            --cherry: #660D0D;
+            --text-dark: #05163B;
+            --text-mid: #3d4a5c;
+            --text-muted: #7a8799;
+            --rule: rgba(5, 22, 59, 0.12);
+        }
+
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--cream);
+            color: var(--text-dark);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        img {
+            max-width: 100%;
+        }
+
+        /* ── UTILITIES ── */
+        .eyebrow {
+            font-size: 10px;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            font-weight: 600;
+            font-family: 'Inter', sans-serif;
+            color: var(--teal);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .eyebrow::before {
+            content: '';
+            width: 24px;
+            height: 1px;
+            background: var(--teal);
+            flex-shrink: 0;
+        }
+
+        .eyebrow.gold {
+            color: var(--butter2);
+        }
+
+        .eyebrow.gold::before {
+            background: var(--butter2);
+        }
+
+        .eyebrow.cream {
+            color: rgba(250, 247, 240, 0.6);
+        }
+
+        .eyebrow.cream::before {
+            background: rgba(250, 247, 240, 0.4);
+        }
+
+        .section-rule {
+            width: 100%;
+            height: 1px;
+            background: var(--rule);
+            margin: 0;
+        }
+
+        .tag {
+            display: inline-block;
+            font-size: 9px;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            font-weight: 600;
+            padding: 4px 10px;
+            border: 1px solid var(--rule);
+            border-radius: 2px;
+            color: var(--teal);
+        }
+
+        .tag.midnight {
+            background: var(--midnight);
+            color: var(--butter);
+            border-color: transparent;
+        }
+
+        .tag.gold {
+            background: rgba(247, 231, 161, 0.2);
+            color: var(--butter2);
+            border-color: rgba(247, 231, 161, 0.3);
+        }
+
+        /* ── NAVIGATION ── */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: rgba(250, 247, 240, 0.95);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--rule);
+            height: 60px;
+            display: flex;
+            align-items: center;
+            transition: box-shadow 0.3s ease;
+        }
+
+        nav.scrolled {
+            box-shadow: 0 1px 20px rgba(5, 22, 59, 0.08);
+        }
+
+        .nav-inner {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .nav-logo svg {
+            flex-shrink: 0;
+        }
+
+        .nav-logo-text {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .nav-logo-the {
+            font-size: 10px;
+            font-style: italic;
+            color: var(--text-muted);
+            letter-spacing: 0.04em;
+            display: block;
+            line-height: 1;
+        }
+
+        .nav-logo-name {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--midnight);
+            letter-spacing: 0.06em;
+            display: block;
+            line-height: 1.2;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-size: 11px;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            font-weight: 500;
+            color: var(--text-mid);
+            transition: color 0.2s;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--midnight);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--midnight);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            background: var(--midnight);
+            color: var(--butter) !important;
+            padding: 8px 20px;
+            font-size: 10px !important;
+            letter-spacing: 0.16em !important;
+            border: none;
+            transition: background 0.2s ease !important;
+        }
+
+        .nav-cta::after {
+            display: none !important;
+        }
+
+        .nav-cta:hover {
+            background: var(--midnight2) !important;
+            color: var(--butter) !important;
+        }
+
+        /* ── HERO ── */
+        #hero {
+            min-height: 100vh;
+            background: var(--midnight);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            padding-top: 60px;
+        }
+
+        .hero-grid-lines {
+            position: absolute;
+            inset: 0;
+            background-image:
+                repeating-linear-gradient(0deg, transparent, transparent 79px, rgba(189, 231, 217, 0.04) 80px),
+                repeating-linear-gradient(90deg, transparent, transparent 79px, rgba(189, 231, 217, 0.03) 80px);
+            pointer-events: none;
+        }
+
+        .hero-prism-bg {
+            position: absolute;
+            right: 8%;
+            top: 50%;
+            transform: translateY(-50%);
+            opacity: 0.05;
+            pointer-events: none;
+        }
+
+        .hero-content {
+            flex: 1;
+            max-width: 1400px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: grid;
+            grid-template-columns: 1fr 380px;
+            gap: 60px;
+            align-items: center;
+            padding-top: 80px;
+            padding-bottom: 80px;
+        }
+
+        .hero-left {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-issue-label {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 40px;
+        }
+
+        .hero-issue-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--teal-light);
+            animation: pulse 2.5s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 0.5;
+                transform: scale(0.8);
+            }
+        }
+
+        .hero-featured-label {
+            font-size: 9px;
+            letter-spacing: 0.28em;
+            text-transform: uppercase;
+            color: rgba(189, 231, 217, 0.5);
+            font-weight: 500;
+        }
+
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(42px, 6vw, 88px);
+            font-weight: 700;
+            line-height: 0.95;
+            color: var(--cream);
+            letter-spacing: -0.02em;
+            margin-bottom: 28px;
+        }
+
+        .hero-title em {
+            font-style: italic;
+            color: var(--butter);
+            display: block;
+        }
+
+        .hero-deck {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(17px, 2.2vw, 22px);
+            color: rgba(250, 247, 240, 0.65);
+            line-height: 1.55;
+            font-style: italic;
+            max-width: 560px;
+            margin-bottom: 40px;
+        }
+
+        .hero-meta {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+
+        .hero-author {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .hero-author-initial {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: rgba(247, 231, 161, 0.15);
+            border: 1px solid rgba(247, 231, 161, 0.25);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--butter);
+            flex-shrink: 0;
+        }
+
+        .hero-author-info {
+            font-size: 13px;
+        }
+
+        .hero-author-name {
+            color: var(--cream);
+            font-weight: 500;
+        }
+
+        .hero-author-meta {
+            color: rgba(250, 247, 240, 0.45);
+            font-size: 11px;
+        }
+
+        .hero-read-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--butter);
+            color: var(--midnight);
+            padding: 12px 24px;
+            font-size: 11px;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            font-weight: 600;
+            transition: all 0.25s ease;
+        }
+
+        .hero-read-btn:hover {
+            background: var(--cream);
+            transform: translateX(3px);
+        }
+
+        .hero-read-btn svg {
+            transition: transform 0.25s ease;
+        }
+
+        .hero-read-btn:hover svg {
+            transform: translateX(4px);
+        }
+
+        .hero-right {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 1px;
+            border-left: 1px solid rgba(189, 231, 217, 0.1);
+            padding-left: 40px;
+        }
+
+        .hero-side-label {
+            font-size: 9px;
+            letter-spacing: 0.24em;
+            text-transform: uppercase;
+            color: rgba(189, 231, 217, 0.35);
+            padding-bottom: 16px;
+            margin-bottom: 4px;
+            border-bottom: 1px solid rgba(189, 231, 217, 0.08);
+        }
+
+        .hero-sidebar-item {
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(189, 231, 217, 0.08);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+
+        .hero-sidebar-item::before {
+            content: '';
+            position: absolute;
+            left: -41px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--butter);
+            opacity: 0;
+            transition: opacity 0.2s ease;
+        }
+
+        .hero-sidebar-item:hover::before {
+            opacity: 1;
+        }
+
+        .hero-sidebar-item:hover {
+            padding-left: 8px;
+        }
+
+        .hero-sidebar-tag {
+            font-size: 8px;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--teal-light);
+            margin-bottom: 8px;
+            opacity: 0.8;
+        }
+
+        .hero-sidebar-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 15px;
+            color: var(--cream);
+            line-height: 1.35;
+            font-weight: 500;
+            margin-bottom: 8px;
+            transition: color 0.2s;
+        }
+
+        .hero-sidebar-item:hover .hero-sidebar-title {
+            color: var(--butter);
+        }
+
+        .hero-sidebar-byline {
+            font-size: 11px;
+            color: rgba(250, 247, 240, 0.35);
+        }
+
+        .hero-bottom {
+            border-top: 1px solid rgba(189, 231, 217, 0.08);
+            padding: 20px 40px;
+        }
+
+        .hero-bottom-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .hero-tagline {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 14px;
+            color: rgba(250, 247, 240, 0.35);
+            letter-spacing: 0.04em;
+        }
+
+        .hero-stats {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+
+        .hero-stat {
+            text-align: right;
+        }
+
+        .hero-stat-num {
+            font-family: 'Playfair Display', serif;
+            font-size: 18px;
+            color: var(--butter);
+            font-weight: 700;
+            display: block;
+        }
+
+        .hero-stat-label {
+            font-size: 9px;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: rgba(250, 247, 240, 0.35);
+        }
+
+        /* ── VOICE OF THE WEEK ── */
+        #voice {
+            background: var(--cream2);
+            padding: 100px 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .voice-ornament {
+            position: absolute;
+            top: 40px;
+            left: 60px;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 280px;
+            color: rgba(5, 22, 59, 0.04);
+            line-height: 1;
+            pointer-events: none;
+            user-select: none;
+            font-style: italic;
+        }
+
+        .voice-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 120px 1fr 280px;
+            gap: 60px;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .voice-left {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 24px;
+        }
+
+        .voice-rotated-label {
+            writing-mode: vertical-rl;
+            transform: rotate(180deg);
+            font-size: 9px;
+            letter-spacing: 0.28em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .voice-rule {
+            width: 1px;
+            height: 80px;
+            background: var(--rule);
+        }
+
+        .voice-center {}
+
+        .voice-quote {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(26px, 4vw, 52px);
+            font-weight: 600;
+            font-style: italic;
+            line-height: 1.2;
+            color: var(--midnight);
+            margin-bottom: 32px;
+            position: relative;
+        }
+
+        .voice-quote::before {
+            content: '\201C';
+            position: absolute;
+            left: -40px;
+            top: -10px;
+            font-size: 80px;
+            color: var(--butter2);
+            opacity: 0.6;
+            line-height: 1;
+        }
+
+        .voice-attribution {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .voice-attr-line {
+            width: 32px;
+            height: 1px;
+            background: var(--teal);
+        }
+
+        .voice-attr-name {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--midnight);
+        }
+
+        .voice-attr-meta {
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        .voice-attr-divider {
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background: var(--text-muted);
+            opacity: 0.4;
+        }
+
+        .voice-attr-essay {
+            font-size: 12px;
+            color: var(--teal);
+            font-style: italic;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .voice-attr-essay:hover {
+            color: var(--midnight);
+        }
+
+        .voice-right {}
+
+        .voice-context-label {
+            font-size: 9px;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+        }
+
+        .voice-context-text {
+            font-size: 14px;
+            line-height: 1.7;
+            color: var(--text-mid);
+            margin-bottom: 20px;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .voice-read-link {
+            font-size: 11px;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--midnight);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: gap 0.2s;
+        }
+
+        .voice-read-link:hover {
+            gap: 14px;
+        }
+
+        /* ── READING PATHWAYS ── */
+        #pathways {
+            background: var(--midnight);
+            padding: 80px 40px;
+            overflow: hidden;
+        }
+
+        .pathways-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .pathways-header {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            margin-bottom: 48px;
+        }
+
+        .pathways-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 32px;
+            color: var(--cream);
+            font-weight: 700;
+            margin-top: 12px;
+        }
+
+        .pathways-sub {
+            font-size: 13px;
+            color: rgba(250, 247, 240, 0.45);
+            max-width: 300px;
+            text-align: right;
+            line-height: 1.6;
+        }
+
+        .pathways-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .pathway-item {
+            display: grid;
+            grid-template-columns: 60px 1fr auto;
+            align-items: center;
+            gap: 32px;
+            padding: 28px 0;
+            border-top: 1px solid rgba(189, 231, 217, 0.08);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .pathway-item:last-child {
+            border-bottom: 1px solid rgba(189, 231, 217, 0.08);
+        }
+
+        .pathway-item::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(189, 231, 217, 0.03);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .pathway-item:hover::after {
+            opacity: 1;
+        }
+
+        .pathway-num {
+            font-family: 'Playfair Display', serif;
+            font-size: 48px;
+            color: rgba(189, 231, 217, 0.12);
+            font-weight: 700;
+            line-height: 1;
+            transition: color 0.3s ease;
+        }
+
+        .pathway-item:hover .pathway-num {
+            color: rgba(247, 231, 161, 0.25);
+        }
+
+        .pathway-body {}
+
+        .pathway-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            color: var(--cream);
+            font-weight: 500;
+            margin-bottom: 6px;
+            transition: color 0.3s;
+        }
+
+        .pathway-item:hover .pathway-name {
+            color: var(--butter);
+        }
+
+        .pathway-desc {
+            font-size: 13px;
+            color: rgba(250, 247, 240, 0.4);
+            line-height: 1.5;
+        }
+
+        .pathway-topics {
+            display: flex;
+            gap: 8px;
+            margin-top: 12px;
+            flex-wrap: wrap;
+        }
+
+        .pathway-topic {
+            font-size: 9px;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: rgba(189, 231, 217, 0.45);
+            border: 1px solid rgba(189, 231, 217, 0.12);
+            padding: 3px 8px;
+            border-radius: 2px;
+        }
+
+        .pathway-meta {
+            text-align: right;
+            min-width: 120px;
+        }
+
+        .pathway-count {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            color: rgba(247, 231, 161, 0.5);
+            font-weight: 700;
+            display: block;
+        }
+
+        .pathway-count-label {
+            font-size: 10px;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: rgba(250, 247, 240, 0.25);
+        }
+
+        .pathway-arrow {
+            display: block;
+            margin-top: 8px;
+            color: rgba(247, 231, 161, 0.4);
+            font-size: 18px;
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+        .pathway-item:hover .pathway-arrow {
+            transform: translateX(6px);
+            color: var(--butter);
+        }
+
+        /* ── TRENDING ANALYSIS ── */
+        #trending {
+            background: var(--cream);
+            padding: 100px 40px;
+        }
+
+        .trending-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 400px;
+            gap: 80px;
+            align-items: start;
+        }
+
+        .trending-list {}
+
+        .trending-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 40px;
+        }
+
+        .trending-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--midnight);
+            margin-top: 10px;
+        }
+
+        .trending-all {
+            font-size: 11px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            transition: color 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .trending-all:hover {
+            color: var(--midnight);
+        }
+
+        .trending-item {
+            display: grid;
+            grid-template-columns: 56px 1fr;
+            gap: 24px;
+            padding: 28px 0;
+            border-bottom: 1px solid var(--rule);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .trending-item:first-of-type {
+            border-top: 1px solid var(--rule);
+        }
+
+        .trending-item:hover {
+            padding-left: 8px;
+        }
+
+        .trending-num {
+            font-family: 'Playfair Display', serif;
+            font-size: 36px;
+            color: rgba(5, 22, 59, 0.08);
+            font-weight: 700;
+            line-height: 1;
+            padding-top: 4px;
+            transition: color 0.3s;
+        }
+
+        .trending-item:hover .trending-num {
+            color: rgba(5, 22, 59, 0.18);
+        }
+
+        .trending-body {}
+
+        .trending-tag {
+            font-size: 9px;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--teal);
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .trending-headline {
+            font-family: 'Playfair Display', serif;
+            font-size: 20px;
+            font-weight: 500;
+            color: var(--midnight);
+            line-height: 1.3;
+            margin-bottom: 10px;
+            transition: color 0.2s;
+        }
+
+        .trending-item:hover .trending-headline {
+            color: var(--teal);
+        }
+
+        .trending-excerpt {
+            font-size: 13px;
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-bottom: 12px;
+        }
+
+        .trending-byline {
+            font-size: 11px;
+            color: var(--text-mid);
+        }
+
+        .trending-byline span {
+            color: var(--text-muted);
+        }
+
+        /* ── SIDEBAR: EDITORS PICK + ABOUT ── */
+        .trending-sidebar {}
+
+        .sidebar-widget {
+            background: var(--midnight);
+            padding: 36px;
+            margin-bottom: 2px;
+        }
+
+        .sidebar-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--cream);
+            margin-bottom: 8px;
+            margin-top: 10px;
+        }
+
+        .sidebar-body {
+            font-size: 13px;
+            color: rgba(250, 247, 240, 0.5);
+            line-height: 1.7;
+            margin-bottom: 24px;
+        }
+
+        .sidebar-pick {
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(189, 231, 217, 0.08);
+            cursor: pointer;
+        }
+
+        .sidebar-pick:last-child {
+            border-bottom: none;
+        }
+
+        .sidebar-pick-tag {
+            font-size: 8px;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--teal-light);
+            margin-bottom: 8px;
+            opacity: 0.7;
+        }
+
+        .sidebar-pick-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 16px;
+            color: var(--cream);
+            line-height: 1.35;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .sidebar-pick:hover .sidebar-pick-title {
+            color: var(--butter);
+        }
+
+        .sidebar-pick-author {
+            font-size: 11px;
+            color: rgba(250, 247, 240, 0.35);
+            margin-top: 8px;
+        }
+
+        .about-widget {
+            background: var(--butter);
+            padding: 36px;
+            margin-top: 2px;
+        }
+
+        .about-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            color: var(--midnight);
+            font-weight: 700;
+            margin-bottom: 16px;
+            line-height: 1.2;
+            margin-top: 10px;
+        }
+
+        .about-text {
+            font-size: 13px;
+            color: var(--midnight);
+            line-height: 1.7;
+            opacity: 0.75;
+            margin-bottom: 20px;
+        }
+
+        .about-link {
+            font-size: 11px;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--midnight);
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: gap 0.2s;
+        }
+
+        .about-link:hover {
+            gap: 14px;
+        }
+
+        /* ── GLOBAL MAP SECTION ── */
+        #global {
+            background: var(--cream2);
+            padding: 100px 40px;
+            overflow: hidden;
+        }
+
+        .global-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .global-header {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: end;
+            margin-bottom: 60px;
+        }
+
+        .global-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(36px, 5vw, 64px);
+            color: var(--midnight);
+            font-weight: 700;
+            line-height: 1.0;
+            margin-top: 12px;
+        }
+
+        .global-title em {
+            font-style: italic;
+            color: var(--teal);
+        }
+
+        .global-desc {
+            font-size: 15px;
+            color: var(--text-mid);
+            line-height: 1.7;
+            margin-bottom: 24px;
+        }
+
+        .global-metrics {
+            display: flex;
+            gap: 32px;
+        }
+
+        .global-metric-num {
+            font-family: 'Playfair Display', serif;
+            font-size: 36px;
+            color: var(--midnight);
+            font-weight: 700;
+            display: block;
+        }
+
+        .global-metric-label {
+            font-size: 10px;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+        }
+
+        .map-container {
+            position: relative;
+            width: 100%;
+            background: var(--midnight);
+            border-radius: 4px;
+            overflow: hidden;
+            aspect-ratio: 2/1;
+        }
+
+        .map-svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .map-writer-dot {
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .map-writer-dot circle:first-child {
+            animation: mapPulse 3s ease-in-out infinite;
+        }
+
+        @keyframes mapPulse {
+
+            0%,
+            100% {
+                opacity: 0.6;
+                r: 3;
+            }
+
+            50% {
+                opacity: 1;
+                r: 4;
+            }
+        }
+
+        .map-tooltip {
+            position: absolute;
+            background: var(--cream);
+            color: var(--midnight);
+            padding: 10px 14px;
+            border-radius: 2px;
+            font-size: 12px;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.2s;
+            box-shadow: 0 4px 20px rgba(5, 22, 59, 0.15);
+            z-index: 10;
+            white-space: nowrap;
+        }
+
+        .map-tooltip.visible {
+            opacity: 1;
+        }
+
+        .global-writer-strip {
+            display: flex;
+            gap: 0;
+            margin-top: 1px;
+            overflow: hidden;
+        }
+
+        .global-writer-card {
+            flex: 1;
+            background: var(--midnight);
+            padding: 24px;
+            border-right: 1px solid rgba(189, 231, 217, 0.06);
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .global-writer-card:last-child {
+            border-right: none;
+        }
+
+        .global-writer-card:hover {
+            background: var(--midnight2);
+        }
+
+        .gwc-country {
+            font-size: 9px;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--teal-light);
+            margin-bottom: 10px;
+            opacity: 0.6;
+        }
+
+        .gwc-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 15px;
+            color: var(--cream);
+            font-weight: 500;
+            margin-bottom: 4px;
+        }
+
+        .gwc-role {
+            font-size: 11px;
+            color: rgba(250, 247, 240, 0.35);
+        }
+
+        /* ── OPPORTUNITIES ── */
+        #opportunities {
+            background: var(--cream);
+            padding: 100px 40px;
+        }
+
+        .opps-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .opps-header {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            margin-bottom: 48px;
+        }
+
+        .opps-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 40px;
+            color: var(--midnight);
+            font-weight: 700;
+            margin-top: 10px;
+        }
+
+        .opps-sub {
+            font-size: 13px;
+            color: var(--text-muted);
+            max-width: 320px;
+            text-align: right;
+            line-height: 1.6;
+        }
+
+        .opps-filters {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 32px;
+            flex-wrap: wrap;
+        }
+
+        .opps-filter {
+            padding: 6px 16px;
+            font-size: 10px;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            border: 1px solid var(--rule);
+            background: transparent;
+            color: var(--text-muted);
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            border-radius: 2px;
+            transition: all 0.2s;
+        }
+
+        .opps-filter.active {
+            background: var(--midnight);
+            color: var(--butter);
+            border-color: var(--midnight);
+        }
+
+        .opps-filter:hover:not(.active) {
+            border-color: var(--midnight);
+            color: var(--midnight);
+        }
+
+        .opps-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .opps-table-head {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 120px 100px;
+            gap: 24px;
+            padding: 12px 0;
+            border-bottom: 2px solid var(--midnight);
+            font-size: 9px;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            font-weight: 600;
+            color: var(--text-muted);
+        }
+
+        .opps-row {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 120px 100px;
+            gap: 24px;
+            padding: 24px 0;
+            border-bottom: 1px solid var(--rule);
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .opps-row:hover {
+            background: rgba(5, 22, 59, 0.02);
+            padding-left: 8px;
+        }
+
+        .opps-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 17px;
+            color: var(--midnight);
+            font-weight: 500;
+            line-height: 1.3;
+            margin-bottom: 4px;
+        }
+
+        .opps-org {
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        .opps-type {
+            font-size: 9px;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--teal);
+            font-weight: 600;
+        }
+
+        .opps-location {
+            font-size: 13px;
+            color: var(--text-mid);
+        }
+
+        .opps-deadline {
+            font-size: 13px;
+            color: var(--midnight);
+            font-weight: 500;
+        }
+
+        .opps-deadline.urgent {
+            color: var(--cherry);
+        }
+
+        .opps-apply {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 10px;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--midnight);
+            font-weight: 600;
+            transition: gap 0.2s;
+        }
+
+        .opps-row:hover .opps-apply {
+            gap: 10px;
+        }
+
+        .opps-view-all {
+            text-align: center;
+            padding-top: 48px;
+        }
+
+        .opps-view-all-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            border: 1px solid var(--midnight);
+            padding: 14px 36px;
+            font-size: 11px;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            font-weight: 600;
+            color: var(--midnight);
+            transition: all 0.25s ease;
+        }
+
+        .opps-view-all-btn:hover {
+            background: var(--midnight);
+            color: var(--butter);
+        }
+
+        /* ── EDITORIAL NOTE ── */
+        #editorial-note {
+            background: var(--midnight);
+            padding: 100px 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .editorial-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 80px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .editorial-left {}
+
+        .editorial-vol {
+            font-size: 9px;
+            letter-spacing: 0.28em;
+            text-transform: uppercase;
+            color: rgba(189, 231, 217, 0.35);
+            margin-bottom: 32px;
+        }
+
+        .editorial-prism {
+            margin-bottom: 40px;
+        }
+
+        .editorial-about-label {
+            font-size: 9px;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: rgba(250, 247, 240, 0.3);
+            margin-bottom: 12px;
+        }
+
+        .editorial-founded {
+            font-size: 13px;
+            color: rgba(250, 247, 240, 0.5);
+            line-height: 1.7;
+        }
+
+        .editorial-right {}
+
+        .editorial-eyebrow {
+            margin-bottom: 28px;
+        }
+
+        .editorial-note-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(28px, 3.5vw, 48px);
+            color: var(--cream);
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 32px;
+            letter-spacing: -0.01em;
+        }
+
+        .editorial-note-title em {
+            font-style: italic;
+            color: var(--butter);
+        }
+
+        .editorial-body {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 20px;
+            color: rgba(250, 247, 240, 0.7);
+            line-height: 1.65;
+            font-style: italic;
+            max-width: 660px;
+            margin-bottom: 36px;
+        }
+
+        .editorial-sig {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .editorial-sig-line {
+            width: 32px;
+            height: 1px;
+            background: var(--butter2);
+        }
+
+        .editorial-sig-name {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--cream);
+        }
+
+        .editorial-sig-role {
+            font-size: 11px;
+            color: rgba(250, 247, 240, 0.4);
+        }
+
+        /* ── PUBLICATIONS ── */
+        #publications {
+            background: var(--cream2);
+            padding: 100px 40px;
+        }
+
+        .pub-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .pub-header {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            margin-bottom: 48px;
+        }
+
+        .pub-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 40px;
+            color: var(--midnight);
+            font-weight: 700;
+            margin-top: 10px;
+        }
+
+        .pub-coming-soon {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(5, 22, 59, 0.06);
+            padding: 8px 16px;
+            font-size: 10px;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+        }
+
+        .pub-coming-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--butter2);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .pub-shelf {
+            display: grid;
+            grid-template-columns: 360px 1fr;
+            gap: 2px;
+        }
+
+        .pub-featured {
+            background: var(--midnight);
+            padding: 48px 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 420px;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .pub-featured:hover {
+            transform: scale(1.01);
+        }
+
+        .pub-featured-bg {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(11, 90, 71, 0.3) 0%, rgba(5, 22, 59, 0.9) 60%);
+            z-index: 0;
+        }
+
+        .pub-featured-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .pub-featured-issue {
+            font-size: 8px;
+            letter-spacing: 0.24em;
+            text-transform: uppercase;
+            color: var(--teal-light);
+            margin-bottom: 20px;
+            opacity: 0.7;
+        }
+
+        .pub-featured-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 36px;
+            color: var(--cream);
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+        .pub-featured-title em {
+            font-style: italic;
+            color: var(--butter);
+        }
+
+        .pub-featured-desc {
+            font-size: 14px;
+            color: rgba(250, 247, 240, 0.55);
+            line-height: 1.65;
+            margin-bottom: 32px;
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 16px;
+        }
+
+        .pub-featured-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--butter);
+            color: var(--midnight);
+            padding: 12px 24px;
+            font-size: 10px;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            font-weight: 700;
+            transition: all 0.25s;
+        }
+
+        .pub-featured:hover .pub-featured-cta {
+            gap: 16px;
+        }
+
+        .pub-featured-coming {
+            position: relative;
+            z-index: 1;
+            font-size: 10px;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: rgba(250, 247, 240, 0.25);
+        }
+
+        .pub-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+            gap: 2px;
+        }
+
+        .pub-item {
+            background: var(--midnight);
+            padding: 32px;
+            cursor: pointer;
+            transition: background 0.2s;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .pub-item:hover {
+            background: var(--midnight2);
+        }
+
+        .pub-item-issue {
+            font-size: 8px;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: rgba(189, 231, 217, 0.35);
+            margin-bottom: 12px;
+        }
+
+        .pub-item-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 19px;
+            color: var(--cream);
+            font-weight: 500;
+            line-height: 1.25;
+            margin-bottom: 12px;
+        }
+
+        .pub-item-tag {
+            font-size: 9px;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--teal-light);
+            opacity: 0.6;
+        }
+
+        .pub-item-placeholder {
+            background: rgba(189, 231, 217, 0.04);
+            border: 1px dashed rgba(189, 231, 217, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 12px;
+            color: rgba(250, 247, 240, 0.2);
+            font-size: 12px;
+            letter-spacing: 0.1em;
+        }
+
+        .pub-item-placeholder svg {
+            opacity: 0.3;
+        }
+
+        /* ── NEWSLETTER ── */
+        #newsletter {
+            background: var(--butter);
+            padding: 100px 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .newsletter-bg-text {
+            position: absolute;
+            right: -20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-family: 'Playfair Display', serif;
+            font-size: 200px;
+            color: rgba(5, 22, 59, 0.05);
+            line-height: 1;
+            pointer-events: none;
+            font-style: italic;
+            white-space: nowrap;
+        }
+
+        .newsletter-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .newsletter-left {}
+
+        .newsletter-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(32px, 4vw, 56px);
+            color: var(--midnight);
+            font-weight: 700;
+            line-height: 1.05;
+            margin-bottom: 20px;
+            margin-top: 12px;
+            letter-spacing: -0.01em;
+        }
+
+        .newsletter-title em {
+            font-style: italic;
+            color: var(--teal);
+        }
+
+        .newsletter-body {
+            font-size: 15px;
+            color: rgba(5, 22, 59, 0.65);
+            line-height: 1.7;
+            margin-bottom: 8px;
+        }
+
+        .newsletter-right {}
+
+        .newsletter-form {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .newsletter-input {
+            width: 100%;
+            padding: 16px 20px;
+            border: 1px solid rgba(5, 22, 59, 0.2);
+            background: rgba(250, 247, 240, 0.6);
+            font-size: 14px;
+            color: var(--midnight);
+            font-family: 'Inter', sans-serif;
+            outline: none;
+            transition: border-color 0.2s;
+            border-radius: 2px;
+        }
+
+        .newsletter-input::placeholder {
+            color: rgba(5, 22, 59, 0.35);
+        }
+
+        .newsletter-input:focus {
+            border-color: var(--midnight);
+            background: rgba(250, 247, 240, 0.9);
+        }
+
+        .newsletter-btn {
+            width: 100%;
+            padding: 16px;
+            background: var(--midnight);
+            color: var(--butter);
+            border: none;
+            font-size: 11px;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            font-weight: 700;
+            font-family: 'Inter', sans-serif;
+            cursor: pointer;
+            transition: background 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .newsletter-btn:hover {
+            background: var(--midnight2);
+        }
+
+        .newsletter-note {
+            font-size: 11px;
+            color: rgba(5, 22, 59, 0.4);
+            line-height: 1.5;
+        }
+
+        /* ── TIMELINE ── */
+        #timeline {
+            background: var(--cream);
+            padding: 100px 40px;
+            overflow: hidden;
+        }
+
+        .timeline-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .timeline-header {
+            margin-bottom: 60px;
+        }
+
+        .timeline-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 40px;
+            color: var(--midnight);
+            font-weight: 700;
+            margin-top: 12px;
+        }
+
+        .timeline-track {
+            position: relative;
+            padding-bottom: 40px;
+        }
+
+        .timeline-line {
+            position: absolute;
+            top: 12px;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: var(--rule);
+        }
+
+        .timeline-progress {
+            position: absolute;
+            top: 12px;
+            left: 0;
+            height: 1px;
+            width: 60%;
+            background: var(--midnight);
+        }
+
+        .timeline-items {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 0;
+            position: relative;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-top: 32px;
+            padding-right: 24px;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            top: 6px;
+            left: 0;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--cream);
+            border: 2px solid var(--rule);
+            transform: translateX(-50%);
+        }
+
+        .timeline-dot.active {
+            background: var(--midnight);
+            border-color: var(--midnight);
+        }
+
+        .timeline-dot.future {
+            background: var(--cream);
+            border-color: var(--rule);
+        }
+
+        .timeline-item-year {
+            font-family: 'Playfair Display', serif;
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .timeline-item-title {
+            font-size: 13px;
+            color: var(--midnight);
+            line-height: 1.4;
+            font-weight: 500;
+            margin-bottom: 6px;
+        }
+
+        .timeline-item.future .timeline-item-title {
+            color: var(--text-muted);
+            font-style: italic;
+        }
+
+        .timeline-item-type {
+            font-size: 9px;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--teal);
+        }
+
+        .timeline-item.future .timeline-item-type {
+            color: var(--text-muted);
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            background: var(--midnight);
+            padding: 80px 40px 40px;
+        }
+
+        .footer-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-top {
+            display: grid;
+            grid-template-columns: 320px 1fr 1fr 280px;
+            gap: 60px;
+            padding-bottom: 60px;
+            border-bottom: 1px solid rgba(189, 231, 217, 0.08);
+        }
+
+        .footer-brand {}
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .footer-logo-text {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .footer-logo-the {
+            font-size: 10px;
+            font-style: italic;
+            color: rgba(250, 247, 240, 0.4);
+            display: block;
+        }
+
+        .footer-logo-name {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--cream);
+            letter-spacing: 0.06em;
+        }
+
+        .footer-tagline {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 14px;
+            color: rgba(250, 247, 240, 0.35);
+            line-height: 1.6;
+            margin-bottom: 24px;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 16px;
+        }
+
+        .footer-social-link {
+            font-size: 10px;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: rgba(250, 247, 240, 0.35);
+            transition: color 0.2s;
+        }
+
+        .footer-social-link:hover {
+            color: var(--butter);
+        }
+
+        .footer-col-title {
+            font-size: 9px;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: rgba(250, 247, 240, 0.25);
+            margin-bottom: 20px;
+        }
+
+        .footer-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .footer-links a {
+            font-size: 13px;
+            color: rgba(250, 247, 240, 0.5);
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: var(--cream);
+        }
+
+        .footer-newsletter-label {
+            font-size: 11px;
+            color: rgba(250, 247, 240, 0.4);
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+
+        .footer-email-row {
+            display: flex;
+            gap: 0;
+        }
+
+        .footer-email-input {
+            flex: 1;
+            padding: 12px 16px;
+            background: rgba(250, 247, 240, 0.06);
+            border: 1px solid rgba(189, 231, 217, 0.12);
+            border-right: none;
+            color: var(--cream);
+            font-size: 13px;
+            font-family: 'Inter', sans-serif;
+            outline: none;
+        }
+
+        .footer-email-input::placeholder {
+            color: rgba(250, 247, 240, 0.25);
+        }
+
+        .footer-email-btn {
+            padding: 12px 20px;
+            background: var(--butter);
+            color: var(--midnight);
+            border: none;
+            font-size: 10px;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            font-weight: 700;
+            font-family: 'Inter', sans-serif;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .footer-email-btn:hover {
+            background: var(--cream);
+        }
+
+        .footer-bottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 32px;
+        }
+
+        .footer-copy {
+            font-size: 11px;
+            color: rgba(250, 247, 240, 0.2);
+            letter-spacing: 0.06em;
+        }
+
+        .footer-bottom-links {
+            display: flex;
+            gap: 24px;
+        }
+
+        .footer-bottom-links a {
+            font-size: 10px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: rgba(250, 247, 240, 0.2);
+            transition: color 0.2s;
+        }
+
+        .footer-bottom-links a:hover {
+            color: rgba(250, 247, 240, 0.5);
+        }
+
+        /* ── SCROLL ANIMATIONS ── */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .fade-up.delay-1 {
+            transition-delay: 0.1s;
+        }
+
+        .fade-up.delay-2 {
+            transition-delay: 0.2s;
+        }
+
+        .fade-up.delay-3 {
+            transition-delay: 0.3s;
+        }
+
+        .fade-up.delay-4 {
+            transition-delay: 0.4s;
+        }
+
+        /* Reading progress bar */
+        #reading-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 2px;
+            background: var(--butter);
+            z-index: 200;
+            width: 0%;
+            transition: width 0.1s linear;
+        }
+
+        /* Search overlay */
+        .search-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--text-mid);
+            padding: 8px;
+            transition: color 0.2s;
+        }
+
+        .search-btn:hover {
+            color: var(--midnight);
+        }
+
+        /* Mobile menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            flex-direction: column;
+            gap: 5px;
+            padding: 8px;
+        }
+
+        .mobile-menu-btn span {
+            display: block;
+            width: 22px;
+            height: 1.5px;
+            background: var(--midnight);
+            transition: all 0.3s;
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 1200px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-right {
+                display: none;
+            }
+
+            .voice-inner {
+                grid-template-columns: 80px 1fr;
+            }
+
+            .voice-right {
+                display: none;
+            }
+
+            .trending-inner {
+                grid-template-columns: 1fr;
+            }
+
+            .trending-sidebar {
+                display: none;
+            }
+
+            .global-header {
+                grid-template-columns: 1fr;
+            }
+
+            .editorial-inner {
+                grid-template-columns: 1fr;
+            }
+
+            .editorial-left {
+                display: none;
+            }
+
+            .newsletter-inner {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-top {
+                grid-template-columns: 1fr 1fr;
+                gap: 40px;
+            }
+
+            .pub-shelf {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline-items {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: flex;
+            }
+
+            .hero-content {
+                padding: 40px 24px;
+            }
+
+            #voice,
+            #pathways,
+            #trending,
+            #global,
+            #opportunities,
+            #editorial-note,
+            #publications,
+            #newsletter,
+            #timeline {
+                padding: 60px 24px;
+            }
+
+            .voice-inner {
+                grid-template-columns: 1fr;
+            }
+
+            .voice-left {
+                display: none;
+            }
+
+            .voice-quote::before {
+                display: none;
+            }
+
+            .pathway-item {
+                grid-template-columns: 40px 1fr;
+            }
+
+            .pathway-meta {
+                display: none;
+            }
+
+            .opps-table-head,
+            .opps-row {
+                grid-template-columns: 1fr auto;
+            }
+
+            .opps-type,
+            .opps-location,
+            .opps-apply {
+                display: none;
+            }
+
+            .timeline-items {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .pub-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-inner {
+                padding: 0 20px;
+            }
+
+            footer {
+                padding: 60px 24px 32px;
+            }
+
+            .footer-top {
+                grid-template-columns: 1fr;
+                gap: 36px;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 16px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Reading progress -->
+    <div id="reading-progress"></div>
+
+    <!-- ── NAVIGATION ── -->
+    <nav id="main-nav">
+        <div class="nav-inner">
+            <a href="/" class="nav-logo">
+                <svg width="32" height="32" viewBox="0 0 56 56" fill="none">
+                    <polygon points="28,3 53,53 3,53" fill="none" stroke="#BDE7D9" stroke-width="1.2" />
+                    <line x1="28" y1="3" x2="28" y2="53" stroke="#E6DDF7" stroke-width="0.6" stroke-dasharray="3,4" />
+                    <circle cx="28" cy="3" r="2.5" fill="#F7E7A1" />
+                    <circle cx="3" cy="53" r="1.6" fill="#E6DDF7" />
+                    <circle cx="53" cy="53" r="1.6" fill="#BDE7D9" />
+                </svg>
+                <div class="nav-logo-text">
+                    <span class="nav-logo-the">The</span>
+                    <span class="nav-logo-name">YOUTH PRISM</span>
+                </div>
+            </a>
+
+            <ul class="nav-links">
+                <li><a href="#trending">Articles</a></li>
+                <li><a href="#">Research</a></li>
+                <li><a href="#">Collective</a></li>
+                <li><a href="#opportunities">Opportunities</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#newsletter" class="nav-cta">Subscribe</a></li>
+            </ul>
+
+            <button class="search-btn" aria-label="Search">
+                <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                    <circle cx="11" cy="11" r="7" />
+                    <path d="M16.5 16.5L21 21" />
+                </svg>
+            </button>
+            <button class="mobile-menu-btn" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- ── HERO ── -->
+    <section id="hero">
+        <div class="hero-grid-lines"></div>
+        <svg class="hero-prism-bg" width="600" height="600" viewBox="0 0 600 600" fill="none">
+            <polygon points="300,30 570,570 30,570" fill="none" stroke="#BDE7D9" stroke-width="1" />
+            <line x1="300" y1="30" x2="300" y2="570" stroke="#E6DDF7" stroke-width="0.8" stroke-dasharray="4,6"
+                opacity="0.6" />
+            <line x1="165" y1="300" x2="435" y2="300" stroke="#BDE7D9" stroke-width="0.5" opacity="0.3" />
+            <circle cx="300" cy="30" r="8" fill="#F7E7A1" opacity="0.8" />
+            <circle cx="30" cy="570" r="5" fill="#E6DDF7" opacity="0.6" />
+            <circle cx="570" cy="570" r="5" fill="#BDE7D9" opacity="0.6" />
+        </svg>
+
+        <div class="hero-content">
+            <div class="hero-left">
+                <div class="hero-issue-label">
+                    <div class="hero-issue-dot"></div>
+                    <span class="hero-featured-label">Cover Essay · June 2026</span>
+                </div>
+
+                <h1 class="hero-title">
+                    The New<br>Geopolitics of
+                    <em>Artificial Intelligence</em>
+                </h1>
+
+                <p class="hero-deck">
+                    As technological power becomes synonymous with national security, sovereign states are building
+                    proprietary AI architectures to decouple from foreign platforms — and the world is fracturing along
+                    digital borders.
+                </p>
+
+                <div class="hero-meta">
+                    <div class="hero-author">
+                        <div class="hero-author-initial">AR</div>
+                        <div class="hero-author-info">
+                            <div class="hero-author-name">Aria Sterling</div>
+                            <div class="hero-author-meta">Technology & Geopolitics · 8 min read</div>
+                        </div>
+                    </div>
+                    <a href="#" class="hero-read-btn">
+                        Read Essay
+                        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"
+                            viewBox="0 0 24 24">
+                            <path d="M5 12h14M12 5l7 7-7 7" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <div class="hero-right">
+                <div class="hero-side-label">Also in this issue</div>
+
+                <div class="hero-sidebar-item">
+                    <div class="hero-sidebar-tag">Policy</div>
+                    <div class="hero-sidebar-title">Algorithmic Labor & the Unionization of the Digital Gig Economy
+                    </div>
+                    <div class="hero-sidebar-byline">By Devon Patel · 6 min read</div>
+                </div>
+
+                <div class="hero-sidebar-item">
+                    <div class="hero-sidebar-tag">Healthcare Equity</div>
+                    <div class="hero-sidebar-title">Vaccine Sovereignty & the Intellectual Property Battleground</div>
+                    <div class="hero-sidebar-byline">By Elena Rostova · 7 min read</div>
+                </div>
+
+                <div class="hero-sidebar-item">
+                    <div class="hero-sidebar-tag">Global Affairs</div>
+                    <div class="hero-sidebar-title">Middle Powers & the Geopolitics of Critical Mineral Cartels</div>
+                    <div class="hero-sidebar-byline">By Marcus Vance · 9 min read</div>
+                </div>
+
+                <div class="hero-sidebar-item">
+                    <div class="hero-sidebar-tag">Economics</div>
+                    <div class="hero-sidebar-title">India's Stock Market in the Age of Algorithmic Capital Flows</div>
+                    <div class="hero-sidebar-byline">By Ishaan Jindal · 11 min read</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="hero-bottom">
+            <div class="hero-bottom-inner">
+                <span class="hero-tagline">Breaking Down the Spectrum of Change</span>
+                <div class="hero-stats">
+                    <div class="hero-stat">
+                        <span class="hero-stat-num">17+</span>
+                        <span class="hero-stat-label">Writers & Scholars</span>
+                    </div>
+                    <div class="hero-stat">
+                        <span class="hero-stat-num">4+</span>
+                        <span class="hero-stat-label">Countries</span>
+                    </div>
+                    <div class="hero-stat">
+                        <span class="hero-stat-num">8</span>
+                        <span class="hero-stat-label">Published Essays</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── VOICE OF THE WEEK ── -->
+    <section id="voice">
+        <div class="voice-ornament">"</div>
+        <div class="voice-inner">
+            <div class="voice-left">
+                <div class="voice-rotated-label">Voice of the Week</div>
+                <div class="voice-rule"></div>
+            </div>
+            <div class="voice-center fade-up">
+                <blockquote class="voice-quote">
+                    Power is no longer negotiated only in parliaments or battlefield trenches — it is written into the
+                    foundational algorithms of our global platforms.
+                </blockquote>
+                <div class="voice-attribution">
+                    <div class="voice-attr-line"></div>
+                    <span class="voice-attr-name">Aria Sterling</span>
+                    <div class="voice-attr-divider"></div>
+                    <span class="voice-attr-meta">Technology Analyst</span>
+                    <div class="voice-attr-divider"></div>
+                    <a href="#" class="voice-attr-essay">From: Algorithmic Sovereignty</a>
+                </div>
+            </div>
+            <div class="voice-right fade-up delay-1">
+                <div class="voice-context-label">Why this matters</div>
+                <p class="voice-context-text">
+                    The regulation of AI is no longer a technical conversation. It has become a matter of national
+                    identity, economic strategy, and geopolitical alignment — reshaping alliances and creating new fault
+                    lines.
+                </p>
+                <a href="#" class="voice-read-link">
+                    Read the full essay
+                    <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path d="M5 12h14M12 5l7 7-7 7" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── READING PATHWAYS ── -->
+    <section id="pathways">
+        <div class="pathways-inner">
+            <div class="pathways-header fade-up">
+                <div>
+                    <div class="eyebrow gold">Explore by topic</div>
+                    <h2 class="pathways-title">Reading Pathways</h2>
+                </div>
+                <p class="pathways-sub">Curated journeys through the ideas shaping our world. Start anywhere.</p>
+            </div>
+
+            <div class="pathways-list">
+                <div class="pathway-item fade-up">
+                    <div class="pathway-num">01</div>
+                    <div class="pathway-body">
+                        <div class="pathway-name">Artificial Intelligence & Society</div>
+                        <div class="pathway-desc">From algorithmic governance to sovereign AI infrastructure — the
+                            systems that are quietly rewriting power.</div>
+                        <div class="pathway-topics">
+                            <span class="pathway-topic">AI Regulation</span>
+                            <span class="pathway-topic">Digital Rights</span>
+                            <span class="pathway-topic">Tech Geopolitics</span>
+                        </div>
+                    </div>
+                    <div class="pathway-meta">
+                        <span class="pathway-count">3</span>
+                        <span class="pathway-count-label">Essays</span>
+                        <span class="pathway-arrow">→</span>
+                    </div>
+                </div>
+
+                <div class="pathway-item fade-up delay-1">
+                    <div class="pathway-num">02</div>
+                    <div class="pathway-body">
+                        <div class="pathway-name">Geopolitics & Global Order</div>
+                        <div class="pathway-desc">The shifting alliances, resource wars, and diplomatic architectures of
+                            a multipolar world.</div>
+                        <div class="pathway-topics">
+                            <span class="pathway-topic">Indo-Pacific</span>
+                            <span class="pathway-topic">Critical Minerals</span>
+                            <span class="pathway-topic">Global South</span>
+                        </div>
+                    </div>
+                    <div class="pathway-meta">
+                        <span class="pathway-count">2</span>
+                        <span class="pathway-count-label">Essays</span>
+                        <span class="pathway-arrow">→</span>
+                    </div>
+                </div>
+
+                <div class="pathway-item fade-up delay-2">
+                    <div class="pathway-num">03</div>
+                    <div class="pathway-body">
+                        <div class="pathway-name">Healthcare & Medical Justice</div>
+                        <div class="pathway-desc">Patent regimes, equity in vaccine access, and the systems that decide
+                            who gets to live well.</div>
+                        <div class="pathway-topics">
+                            <span class="pathway-topic">IP Law</span>
+                            <span class="pathway-topic">Global Health</span>
+                            <span class="pathway-topic">Equity</span>
+                        </div>
+                    </div>
+                    <div class="pathway-meta">
+                        <span class="pathway-count">1</span>
+                        <span class="pathway-count-label">Essay</span>
+                        <span class="pathway-arrow">→</span>
+                    </div>
+                </div>
+
+                <div class="pathway-item fade-up delay-3">
+                    <div class="pathway-num">04</div>
+                    <div class="pathway-body">
+                        <div class="pathway-name">Policy & Democratic Systems</div>
+                        <div class="pathway-desc">Labour, governance, platform power, and the laws that protect — or
+                            fail — the people who need them most.</div>
+                        <div class="pathway-topics">
+                            <span class="pathway-topic">Gig Economy</span>
+                            <span class="pathway-topic">Labour Rights</span>
+                            <span class="pathway-topic">Platform Policy</span>
+                        </div>
+                    </div>
+                    <div class="pathway-meta">
+                        <span class="pathway-count">2</span>
+                        <span class="pathway-count-label">Essays</span>
+                        <span class="pathway-arrow">→</span>
+                    </div>
+                </div>
+
+                <div class="pathway-item fade-up delay-4">
+                    <div class="pathway-num">05</div>
+                    <div class="pathway-body">
+                        <div class="pathway-name">Economics & Capital</div>
+                        <div class="pathway-desc">Markets, monetary systems, and the financial structures that
+                            concentrate or distribute wealth across the globe.</div>
+                        <div class="pathway-topics">
+                            <span class="pathway-topic">Financial Markets</span>
+                            <span class="pathway-topic">India Economy</span>
+                            <span class="pathway-topic">Capital Flows</span>
+                        </div>
+                    </div>
+                    <div class="pathway-meta">
+                        <span class="pathway-count">1</span>
+                        <span class="pathway-count-label">Essay</span>
+                        <span class="pathway-arrow">→</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── TRENDING ANALYSIS ── -->
+    <section id="trending">
+        <div class="trending-inner">
+            <div class="trending-list">
+                <div class="trending-header">
+                    <div>
+                        <div class="eyebrow">Published Essays</div>
+                        <div class="trending-title">Recent Analysis</div>
+                    </div>
+                    <a href="#" class="trending-all">All Articles <span>→</span></a>
+                </div>
+
+                <div class="trending-item fade-up">
+                    <div class="trending-num">01</div>
+                    <div class="trending-body">
+                        <div class="trending-tag">Technology</div>
+                        <h3 class="trending-headline">Algorithmic Sovereignty & the New Geopolitics of AI Regulation
+                        </h3>
+                        <p class="trending-excerpt">As technological power becomes synonymous with national security,
+                            major sovereign states are building proprietary AI architectures to decouple from foreign
+                            tech giants.</p>
+                        <div class="trending-byline">By Aria Sterling <span>· Jun 10, 2026 · 8 min read</span></div>
+                    </div>
+                </div>
+
+                <div class="trending-item fade-up delay-1">
+                    <div class="trending-num">02</div>
+                    <div class="trending-body">
+                        <div class="trending-tag">Policy</div>
+                        <h3 class="trending-headline">Algorithmic Labor & the Unionization of the Digital Gig Economy
+                        </h3>
+                        <p class="trending-excerpt">Deconstructing the mathematical oversight of platform work, and how
+                            gig workers are organizing against opaque automated scheduling systems.</p>
+                        <div class="trending-byline">By Devon Patel <span>· Jun 9, 2026 · 6 min read</span></div>
+                    </div>
+                </div>
+
+                <div class="trending-item fade-up delay-2">
+                    <div class="trending-num">03</div>
+                    <div class="trending-body">
+                        <div class="trending-tag">Healthcare Equity</div>
+                        <h3 class="trending-headline">Vaccine Sovereignty & the Intellectual Property Battleground</h3>
+                        <p class="trending-excerpt">Deconstructing global patent regimes, vaccine supply chains, and the
+                            regional efforts to bypass traditional pharmaceutical distribution frameworks.</p>
+                        <div class="trending-byline">By Elena Rostova <span>· Jun 7, 2026 · 7 min read</span></div>
+                    </div>
+                </div>
+
+                <div class="trending-item fade-up delay-3">
+                    <div class="trending-num">04</div>
+                    <div class="trending-body">
+                        <div class="trending-tag">Global Affairs</div>
+                        <h3 class="trending-headline">Middle Powers & the Geopolitics of Critical Mineral Cartels</h3>
+                        <p class="trending-excerpt">As the green transition accelerates, countries rich in lithium,
+                            cobalt, and nickel are moving to form regulatory alliances resembling OPEC.</p>
+                        <div class="trending-byline">By Marcus Vance <span>· Jun 5, 2026 · 9 min read</span></div>
+                    </div>
+                </div>
+
+                <div class="trending-item fade-up delay-4">
+                    <div class="trending-num">05</div>
+                    <div class="trending-body">
+                        <div class="trending-tag">Economics</div>
+                        <h3 class="trending-headline">India's Stock Market Performance During the AI Boom</h3>
+                        <p class="trending-excerpt">Examining how algorithmic capital flows and retail investor
+                            sentiment are reshaping India's equity markets in the age of generative AI infrastructure.
+                        </p>
+                        <div class="trending-byline">By Ishaan Jindal <span>· Jun 1, 2026 · 11 min read</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="trending-sidebar fade-up delay-2">
+                <div class="sidebar-widget">
+                    <div class="eyebrow gold">Editor's selection</div>
+                    <div class="sidebar-title">Must Reads</div>
+                    <div class="sidebar-body">Essays chosen by the editorial team for depth, clarity, and lasting
+                        relevance.</div>
+
+                    <div class="sidebar-pick">
+                        <div class="sidebar-pick-tag">Technology</div>
+                        <div class="sidebar-pick-title">Algorithmic Sovereignty & the New Geopolitics of AI Regulation
+                        </div>
+                        <div class="sidebar-pick-author">Aria Sterling</div>
+                    </div>
+                    <div class="sidebar-pick">
+                        <div class="sidebar-pick-tag">Healthcare</div>
+                        <div class="sidebar-pick-title">Vaccine Sovereignty & the Intellectual Property Battleground
+                        </div>
+                        <div class="sidebar-pick-author">Elena Rostova</div>
+                    </div>
+                    <div class="sidebar-pick">
+                        <div class="sidebar-pick-tag">Global Affairs</div>
+                        <div class="sidebar-pick-title">Middle Powers & the Geopolitics of Critical Mineral Cartels
+                        </div>
+                        <div class="sidebar-pick-author">Marcus Vance</div>
+                    </div>
+                </div>
+
+                <div class="about-widget">
+                    <div class="eyebrow">Our mission</div>
+                    <div class="about-title">We explain the systems shaping your future.</div>
+                    <p class="about-text">Not just events. Not just opinions. Rigorous, accessible analysis — written by
+                        young people for the generation inheriting the consequences.</p>
+                    <a href="#" class="about-link">Meet the collective →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── GLOBAL MAP ── -->
+    <section id="global">
+        <div class="global-inner">
+            <div class="global-header">
+                <div class="fade-up">
+                    <div class="eyebrow">A global publication</div>
+                    <h2 class="global-title">Writers from<br><em>across the world</em></h2>
+                </div>
+                <div class="fade-up delay-1">
+                    <p class="global-desc">The Youth Prism is not a local publication with global ambition. It is a
+                        genuinely global publication — with contributors from India, the UK, the US, Eastern Europe, and
+                        beyond.</p>
+                    <div class="global-metrics">
+                        <div>
+                            <span class="global-metric-num">17+</span>
+                            <span class="global-metric-label">Contributors</span>
+                        </div>
+                        <div>
+                            <span class="global-metric-num">4+</span>
+                            <span class="global-metric-label">Countries</span>
+                        </div>
+                        <div>
+                            <span class="global-metric-num">5</span>
+                            <span class="global-metric-label">Disciplines</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Interactive World Map -->
+            <div class="map-container fade-up" id="mapContainer">
+                <svg class="map-svg" viewBox="0 0 1000 500" id="worldMap">
+                    <!-- Simplified world map paths -->
+                    <rect width="1000" height="500" fill="#05163B" />
+                    <!-- Grid lines -->
+                    <line x1="0" y1="250" x2="1000" y2="250" stroke="rgba(189,231,217,0.06)" stroke-width="1" />
+                    <line x1="500" y1="0" x2="500" y2="500" stroke="rgba(189,231,217,0.06)" stroke-width="1" />
+
+                    <!-- Simplified continent shapes -->
+                    <!-- North America -->
+                    <path d="M80,80 L200,60 L240,80 L260,140 L240,180 L200,200 L160,220 L120,200 L80,180 L70,140Z"
+                        fill="rgba(189,231,217,0.08)" stroke="rgba(189,231,217,0.15)" stroke-width="0.5" />
+                    <!-- South America -->
+                    <path d="M160,230 L220,220 L250,260 L240,340 L200,380 L160,360 L140,310 L140,270Z"
+                        fill="rgba(189,231,217,0.08)" stroke="rgba(189,231,217,0.15)" stroke-width="0.5" />
+                    <!-- Europe -->
+                    <path d="M420,70 L500,60 L520,90 L500,110 L480,120 L450,115 L430,100Z" fill="rgba(189,231,217,0.08)"
+                        stroke="rgba(189,231,217,0.15)" stroke-width="0.5" />
+                    <!-- Africa -->
+                    <path d="M430,130 L510,120 L540,160 L550,240 L520,310 L480,330 L440,300 L420,240 L410,170Z"
+                        fill="rgba(189,231,217,0.08)" stroke="rgba(189,231,217,0.15)" stroke-width="0.5" />
+                    <!-- Asia -->
+                    <path
+                        d="M520,60 L740,50 L800,80 L820,120 L800,160 L760,180 L700,190 L640,180 L600,160 L560,130 L520,110 L510,85Z"
+                        fill="rgba(189,231,217,0.08)" stroke="rgba(189,231,217,0.15)" stroke-width="0.5" />
+                    <!-- South Asia (India highlighted) -->
+                    <path d="M640,180 L700,175 L720,210 L700,270 L660,290 L640,260 L630,220Z"
+                        fill="rgba(189,231,217,0.12)" stroke="rgba(189,231,217,0.2)" stroke-width="0.5" />
+                    <!-- Southeast Asia -->
+                    <path d="M730,180 L800,170 L820,200 L800,230 L760,240 L730,220Z" fill="rgba(189,231,217,0.08)"
+                        stroke="rgba(189,231,217,0.15)" stroke-width="0.5" />
+                    <!-- Australia -->
+                    <path d="M760,300 L860,290 L900,330 L880,380 L820,400 L770,380 L750,340Z"
+                        fill="rgba(189,231,217,0.08)" stroke="rgba(189,231,217,0.15)" stroke-width="0.5" />
+
+                    <!-- Writer dots with pulse -->
+                    <!-- India -->
+                    <g class="map-writer-dot" data-name="Manan Jindal" data-role="Founder & Editor" data-loc="India">
+                        <circle cx="668" cy="220" r="8" fill="rgba(247,231,161,0.15)" />
+                        <circle cx="668" cy="220" r="4" fill="#F7E7A1" />
+                    </g>
+                    <!-- India 2 -->
+                    <g class="map-writer-dot" data-name="Ishaan Jindal" data-role="Economics Analyst" data-loc="India">
+                        <circle cx="675" cy="235" r="6" fill="rgba(247,231,161,0.12)" />
+                        <circle cx="675" cy="235" r="3.5" fill="#F7E7A1" opacity="0.8" />
+                    </g>
+                    <!-- USA -->
+                    <g class="map-writer-dot" data-name="Devon Patel" data-role="Policy Analyst"
+                        data-loc="United States">
+                        <circle cx="160" cy="140" r="7" fill="rgba(189,231,217,0.15)" />
+                        <circle cx="160" cy="140" r="3.5" fill="#BDE7D9" />
+                    </g>
+                    <!-- UK -->
+                    <g class="map-writer-dot" data-name="Aria Sterling" data-role="Technology & Geopolitics"
+                        data-loc="United Kingdom">
+                        <circle cx="448" cy="85" r="7" fill="rgba(189,231,217,0.15)" />
+                        <circle cx="448" cy="85" r="3.5" fill="#BDE7D9" />
+                    </g>
+                    <!-- Eastern Europe -->
+                    <g class="map-writer-dot" data-name="Elena Rostova" data-role="Healthcare Policy"
+                        data-loc="Eastern Europe">
+                        <circle cx="530" cy="90" r="6" fill="rgba(230,221,247,0.2)" />
+                        <circle cx="530" cy="90" r="3.5" fill="#E6DDF7" />
+                    </g>
+                    <!-- South Africa -->
+                    <g class="map-writer-dot" data-name="Marcus Vance" data-role="Global Affairs"
+                        data-loc="South Africa">
+                        <circle cx="480" cy="300" r="6" fill="rgba(189,231,217,0.15)" />
+                        <circle cx="480" cy="300" r="3.5" fill="#BDE7D9" />
+                    </g>
+                    <!-- India 3 (multiple contributors) -->
+                    <g class="map-writer-dot" data-name="5 contributors" data-role="Writers & Researchers"
+                        data-loc="India">
+                        <circle cx="655" cy="248" r="6" fill="rgba(247,231,161,0.12)" />
+                        <circle cx="655" cy="248" r="3" fill="#F7E7A1" opacity="0.7" />
+                    </g>
+                </svg>
+                <div class="map-tooltip" id="mapTooltip"></div>
+            </div>
+
+            <div class="global-writer-strip fade-up delay-2">
+                <div class="global-writer-card">
+                    <div class="gwc-country">India</div>
+                    <div class="gwc-name">Manan Jindal</div>
+                    <div class="gwc-role">Founder & Editor-in-Chief</div>
+                </div>
+                <div class="global-writer-card">
+                    <div class="gwc-country">United States</div>
+                    <div class="gwc-name">Devon Patel</div>
+                    <div class="gwc-role">Policy Analyst</div>
+                </div>
+                <div class="global-writer-card">
+                    <div class="gwc-country">United Kingdom</div>
+                    <div class="gwc-name">Aria Sterling</div>
+                    <div class="gwc-role">Technology & Geopolitics</div>
+                </div>
+                <div class="global-writer-card">
+                    <div class="gwc-country">Eastern Europe</div>
+                    <div class="gwc-name">Elena Rostova</div>
+                    <div class="gwc-role">Healthcare Policy</div>
+                </div>
+                <div class="global-writer-card">
+                    <div class="gwc-country">South Africa</div>
+                    <div class="gwc-name">Marcus Vance</div>
+                    <div class="gwc-role">Global Affairs</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── OPPORTUNITIES ── -->
+    <section id="opportunities">
+        <div class="opps-inner">
+            <div class="opps-header fade-up">
+                <div>
+                    <div class="eyebrow">For young people</div>
+                    <h2 class="opps-title">Opportunities Desk</h2>
+                </div>
+                <p class="opps-sub">Curated fellowships, scholarships, internships and competitions — updated weekly.
+                </p>
+            </div>
+
+            <div class="opps-filters fade-up delay-1">
+                <button class="opps-filter active">All</button>
+                <button class="opps-filter">Fellowships</button>
+                <button class="opps-filter">Scholarships</button>
+                <button class="opps-filter">Competitions</button>
+                <button class="opps-filter">Internships</button>
+                <button class="opps-filter">Research</button>
+            </div>
+
+            <div class="opps-table fade-up delay-2">
+                <div class="opps-table-head">
+                    <span>Opportunity</span>
+                    <span>Type</span>
+                    <span>Location</span>
+                    <span>Deadline</span>
+                    <span></span>
+                </div>
+
+                <div class="opps-row">
+                    <div>
+                        <div class="opps-name">Summer Essay Competition: Algorithmic Rights</div>
+                        <div class="opps-org">The Youth Prism Open Call · $3,000 Prize</div>
+                    </div>
+                    <div class="opps-type">Competition</div>
+                    <div class="opps-location">Global / Open</div>
+                    <div class="opps-deadline urgent">Jul 20, 2026</div>
+                    <div class="opps-apply">Apply →</div>
+                </div>
+
+                <div class="opps-row">
+                    <div>
+                        <div class="opps-name">AI Governance Research Grant 2026</div>
+                        <div class="opps-org">Open Society Foundations · $15,000</div>
+                    </div>
+                    <div class="opps-type">Research</div>
+                    <div class="opps-location">London / Hybrid</div>
+                    <div class="opps-deadline">Jul 30, 2026</div>
+                    <div class="opps-apply">Apply →</div>
+                </div>
+
+                <div class="opps-row">
+                    <div>
+                        <div class="opps-name">Global South Policy Fellowship 2026</div>
+                        <div class="opps-org">Carnegie Endowment for Peace · $4,200/mo</div>
+                    </div>
+                    <div class="opps-type">Fellowship</div>
+                    <div class="opps-location">Geneva / Remote</div>
+                    <div class="opps-deadline">Aug 15, 2026</div>
+                    <div class="opps-apply">Apply →</div>
+                </div>
+
+                <div class="opps-row">
+                    <div>
+                        <div class="opps-name">Geopolitical Analysis Internship</div>
+                        <div class="opps-org">Brookings Institution · $2,500/mo</div>
+                    </div>
+                    <div class="opps-type">Internship</div>
+                    <div class="opps-location">Washington D.C.</div>
+                    <div class="opps-deadline">Sep 10, 2026</div>
+                    <div class="opps-apply">Apply →</div>
+                </div>
+
+                <div class="opps-row">
+                    <div>
+                        <div class="opps-name">Young Leaders in Technology Policy</div>
+                        <div class="opps-org">Lumiere Research · Fully Funded</div>
+                    </div>
+                    <div class="opps-type">Fellowship</div>
+                    <div class="opps-location">Remote / Global</div>
+                    <div class="opps-deadline">Sep 30, 2026</div>
+                    <div class="opps-apply">Apply →</div>
+                </div>
+            </div>
+
+            <div class="opps-view-all fade-up delay-3">
+                <a href="#" class="opps-view-all-btn">
+                    View All Opportunities
+                    <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path d="M5 12h14M12 5l7 7-7 7" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── EDITORIAL NOTE ── -->
+    <section id="editorial-note">
+        <svg style="position:absolute;right:-100px;top:50%;transform:translateY(-50%);opacity:0.04;pointer-events:none;"
+            width="700" height="700" viewBox="0 0 700 700" fill="none">
+            <polygon points="350,30 670,670 30,670" fill="none" stroke="#BDE7D9" stroke-width="1.5" />
+            <circle cx="350" cy="30" r="12" fill="#F7E7A1" />
+        </svg>
+        <div class="editorial-inner">
+            <div class="editorial-left fade-up">
+                <div class="editorial-vol">Est. 2025</div>
+                <div class="editorial-prism">
+                    <svg width="56" height="56" viewBox="0 0 56 56" fill="none">
+                        <polygon points="28,3 53,53 3,53" fill="none" stroke="#BDE7D9" stroke-width="1.2" />
+                        <line x1="28" y1="3" x2="28" y2="53" stroke="#E6DDF7" stroke-width="0.6"
+                            stroke-dasharray="3,4" />
+                        <circle cx="28" cy="3" r="2.5" fill="#F7E7A1" />
+                        <circle cx="3" cy="53" r="1.6" fill="#E6DDF7" />
+                        <circle cx="53" cy="53" r="1.6" fill="#BDE7D9" />
+                    </svg>
+                </div>
+                <div class="editorial-about-label">The publication</div>
+                <div class="editorial-founded">
+                    The Youth Prism is a global, youth-led publication founded on the belief that serious ideas have no
+                    age requirement. Based across four countries, built entirely by people under 25.
+                </div>
+            </div>
+            <div class="editorial-right fade-up delay-1">
+                <div class="eyebrow cream editorial-eyebrow">From the editor</div>
+                <h2 class="editorial-note-title">A learning journey<br>disguised as <em>a publication.</em></h2>
+                <p class="editorial-body">
+                    Our generation scrolls through stories about global shifts in technology, health, policy, and
+                    politics — but rarely gets the chance to understand them deeply. The Youth Prism was born from that
+                    gap. Not to report. Not just to opine. But to help young people see the systems underneath the
+                    headlines.
+                </p>
+                <div class="editorial-sig">
+                    <div class="editorial-sig-line"></div>
+                    <div>
+                        <div class="editorial-sig-name">Manan Jindal</div>
+                        <div class="editorial-sig-role">Founder & Editor-in-Chief</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── UPCOMING PUBLICATIONS ── -->
+    <section id="publications">
+        <div class="pub-inner">
+            <div class="pub-header fade-up">
+                <div>
+                    <div class="eyebrow">Flagship publications</div>
+                    <h2 class="pub-title">The Magazine</h2>
+                </div>
+                <div class="pub-coming-soon">
+                    <div class="pub-coming-dot"></div>
+                    First issue coming soon
+                </div>
+            </div>
+
+            <div class="pub-shelf fade-up delay-1">
+                <div class="pub-featured">
+                    <div class="pub-featured-bg"></div>
+                    <div class="pub-featured-content">
+                        <div class="pub-featured-issue">Vol. 01 · The AI Issue</div>
+                        <h3 class="pub-featured-title">Governing the<br><em>Ungovernable</em></h3>
+                        <p class="pub-featured-desc">
+                            A deep investigation into the global effort to regulate artificial intelligence — from
+                            Brussels to Beijing, and everything the frameworks miss.
+                        </p>
+                        <div class="pub-featured-cta">
+                            Notify me when it launches
+                            <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2"
+                                viewBox="0 0 24 24">
+                                <path d="M5 12h14M12 5l7 7-7 7" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="pub-featured-coming">Issue in production · 2026</div>
+                </div>
+
+                <div class="pub-grid">
+                    <div class="pub-item">
+                        <div>
+                            <div class="pub-item-issue">Vol. 02 · Planned</div>
+                            <div class="pub-item-title">The Elections Issue</div>
+                        </div>
+                        <div class="pub-item-tag">Democracy & Governance</div>
+                    </div>
+                    <div class="pub-item">
+                        <div>
+                            <div class="pub-item-issue">Vol. 03 · Planned</div>
+                            <div class="pub-item-title">The Indo-Pacific Issue</div>
+                        </div>
+                        <div class="pub-item-tag">Geopolitics & Security</div>
+                    </div>
+                    <div class="pub-item pub-item-placeholder">
+                        <svg width="28" height="28" viewBox="0 0 56 56" fill="none">
+                            <polygon points="28,3 53,53 3,53" fill="none" stroke="#BDE7D9" stroke-width="1.2" />
+                        </svg>
+                        <span>Coming later</span>
+                    </div>
+                    <div class="pub-item pub-item-placeholder">
+                        <svg width="28" height="28" viewBox="0 0 56 56" fill="none">
+                            <polygon points="28,3 53,53 3,53" fill="none" stroke="#BDE7D9" stroke-width="1.2" />
+                        </svg>
+                        <span>Coming later</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── TIMELINE ── -->
+    <section id="timeline">
+        <div class="timeline-inner">
+            <div class="timeline-header fade-up">
+                <div class="eyebrow">Our journey</div>
+                <h2 class="timeline-title">The Road So Far</h2>
+            </div>
+            <div class="timeline-track fade-up delay-1">
+                <div class="timeline-line"></div>
+                <div class="timeline-progress"></div>
+                <div class="timeline-items">
+                    <div class="timeline-item">
+                        <div class="timeline-dot active"></div>
+                        <div class="timeline-item-year">Early 2025</div>
+                        <div class="timeline-item-title">Publication Founded on Medium & Substack</div>
+                        <div class="timeline-item-type">Launch</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot active"></div>
+                        <div class="timeline-item-year">Mid 2025</div>
+                        <div class="timeline-item-title">17+ Writers from 4 Countries Join</div>
+                        <div class="timeline-item-type">Milestone</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot active"></div>
+                        <div class="timeline-item-year">Early 2026</div>
+                        <div class="timeline-item-title">Lumiere Research Partnership</div>
+                        <div class="timeline-item-type">Partnership</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot active"></div>
+                        <div class="timeline-item-year">Jun 2026</div>
+                        <div class="timeline-item-title">New Website Launch</div>
+                        <div class="timeline-item-type">Platform</div>
+                    </div>
+                    <div class="timeline-item future">
+                        <div class="timeline-dot future"></div>
+                        <div class="timeline-item-year">Late 2026</div>
+                        <div class="timeline-item-title">First Digital Magazine Issue</div>
+                        <div class="timeline-item-type">Publication</div>
+                    </div>
+                    <div class="timeline-item future">
+                        <div class="timeline-dot future"></div>
+                        <div class="timeline-item-year">2027</div>
+                        <div class="timeline-item-title">Expanded Collective & Research Wing</div>
+                        <div class="timeline-item-type">Growth</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── NEWSLETTER ── -->
+    <section id="newsletter">
+        <div class="newsletter-bg-text">Prism</div>
+        <div class="newsletter-inner">
+            <div class="newsletter-left fade-up">
+                <div class="eyebrow">Stay informed</div>
+                <h2 class="newsletter-title">The ideas that<br>matter, <em>clearly told.</em></h2>
+                <p class="newsletter-body">Join the TYP community. Receive our curated analysis of technology, policy,
+                    and global affairs — written by young people who take ideas seriously.</p>
+            </div>
+            <div class="newsletter-right fade-up delay-1">
+                <div class="newsletter-form">
+                    <input type="text" class="newsletter-input" placeholder="Your name">
+                    <input type="email" class="newsletter-input" placeholder="Your email address">
+                    <button class="newsletter-btn">
+                        Subscribe to The Briefing
+                        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"
+                            viewBox="0 0 24 24">
+                            <path d="M5 12h14M12 5l7 7-7 7" />
+                        </svg>
+                    </button>
+                    <p class="newsletter-note">No spam. No noise. Unsubscribe any time. We publish to Substack — you'll
+                        receive updates there.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── FOOTER ── -->
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <svg width="28" height="28" viewBox="0 0 56 56" fill="none">
+                            <polygon points="28,3 53,53 3,53" fill="none" stroke="#BDE7D9" stroke-width="1.2" />
+                            <circle cx="28" cy="3" r="2.5" fill="#F7E7A1" />
+                            <circle cx="3" cy="53" r="1.6" fill="#E6DDF7" />
+                            <circle cx="53" cy="53" r="1.6" fill="#BDE7D9" />
+                        </svg>
+                        <div class="footer-logo-text">
+                            <span class="footer-logo-the">The</span>
+                            <span class="footer-logo-name">YOUTH PRISM</span>
+                        </div>
+                    </div>
+                    <p class="footer-tagline">Breaking Down the Spectrum of Change — a global, youth-led publication
+                        exploring the systems shaping the future.</p>
+                    <div class="footer-social">
+                        <a href="#" class="footer-social-link">Instagram</a>
+                        <a href="#" class="footer-social-link">LinkedIn</a>
+                        <a href="#" class="footer-social-link">Substack</a>
+                        <a href="#" class="footer-social-link">Medium</a>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="footer-col-title">Publication</div>
+                    <ul class="footer-links">
+                        <li><a href="#">All Articles</a></li>
+                        <li><a href="#">Research</a></li>
+                        <li><a href="#">The Magazine</a></li>
+                        <li><a href="#">Archive</a></li>
+                        <li><a href="#">Reading Pathways</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <div class="footer-col-title">Collective</div>
+                    <ul class="footer-links">
+                        <li><a href="#">About TYP</a></li>
+                        <li><a href="#">Our Team</a></li>
+                        <li><a href="#">Write For Us</a></li>
+                        <li><a href="#">Opportunities</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <div class="footer-col-title">The Briefing</div>
+                    <p class="footer-newsletter-label">Our curated newsletter — ideas that matter, delivered with
+                        clarity.</p>
+                    <div class="footer-email-row">
+                        <input type="email" class="footer-email-input" placeholder="Your email">
+                        <button class="footer-email-btn">Subscribe</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <span class="footer-copy">© 2026 The Youth Prism. All rights reserved. Est. 2025.</span>
+                <div class="footer-bottom-links">
+                    <a href="#">Privacy</a>
+                    <a href="#">Submissions</a>
+                    <a href="#">Masthead</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // ── Navigation scroll effect ──
+        const nav = document.getElementById('main-nav');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 20) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        // ── Reading progress bar ──
+        const progressBar = document.getElementById('reading-progress');
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+            progressBar.style.width = progress + '%';
+        });
+
+        // ── Scroll animations ──
+        const fadeElements = document.querySelectorAll('.fade-up');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+        fadeElements.forEach(el => observer.observe(el));
+
+        // ── Map tooltips ──
+        const mapDots = document.querySelectorAll('.map-writer-dot');
+        const tooltip = document.getElementById('mapTooltip');
+        const mapContainer = document.getElementById('mapContainer');
+
+        mapDots.forEach(dot => {
+            dot.addEventListener('mouseenter', (e) => {
+                const name = dot.dataset.name;
+                const role = dot.dataset.role;
+                const loc = dot.dataset.loc;
+                tooltip.innerHTML = `<strong>${name}</strong><br>${role}<br><span style="color:var(--teal);font-size:10px;">${loc}</span>`;
+                tooltip.classList.add('visible');
+            });
+            dot.addEventListener('mousemove', (e) => {
+                const rect = mapContainer.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                tooltip.style.left = (x + 12) + 'px';
+                tooltip.style.top = (y - 40) + 'px';
+            });
+            dot.addEventListener('mouseleave', () => {
+                tooltip.classList.remove('visible');
+            });
+        });
+
+        // ── Opportunities filter ──
+        const filterBtns = document.querySelectorAll('.opps-filter');
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+            });
+        });
+
+        // ── Animated prism dots ──
+        // Stagger the map dot pulse animations
+        const circles = document.querySelectorAll('.map-writer-dot circle:first-child');
+        circles.forEach((c, i) => {
+            c.style.animationDelay = (i * 0.4) + 's';
+        });
+
+        // ── Pathway hover ──
+        const pathwayItems = document.querySelectorAll('.pathway-item');
+        pathwayItems.forEach(item => {
+            item.addEventListener('mouseenter', () => {
+                pathwayItems.forEach(i => i.style.opacity = '0.5');
+                item.style.opacity = '1';
+            });
+            item.addEventListener('mouseleave', () => {
+                pathwayItems.forEach(i => i.style.opacity = '1');
+            });
+        });
+
+        // ── Hero sidebar hover ──
+        const sidebarItems = document.querySelectorAll('.hero-sidebar-item');
+        sidebarItems.forEach(item => {
+            item.addEventListener('click', () => {
+                // Would navigate to article
+                console.log('Navigate to article');
+            });
+        });
+    </script>
+</body>
+
+</html>
