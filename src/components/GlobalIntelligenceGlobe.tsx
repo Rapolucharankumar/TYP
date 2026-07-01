@@ -2,6 +2,9 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 import ThreeGlobe from './ThreeGlobe';
+import { ComposableMap, Geographies, Geography, Marker, Line } from "react-simple-maps";
+
+const geoUrl = "https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json";
 
 /* ── Brand colors (Demo Homepage values) ── */
 const C = {
@@ -133,7 +136,7 @@ export default function GlobalIntelligenceGlobe({ onSelectCountry }: GlobeProps)
               fontFamily: 'var(--font-playfair, Georgia, serif)',
               fontSize: 'clamp(28px, 4vw, 52px)',
               fontWeight: 700,
-              color: C.midnight,
+              color: 'var(--foreground)',
               marginTop: 12,
               lineHeight: 1.05,
               letterSpacing: '-0.02em',
@@ -147,14 +150,14 @@ export default function GlobalIntelligenceGlobe({ onSelectCountry }: GlobeProps)
         </div>
 
         <div style={{ maxWidth: 300 }}>
-          <p style={{ fontSize: 14, color: 'rgba(15,23,42,0.60)', lineHeight: 1.7, marginBottom: 16, fontFamily: 'var(--font-inter, sans-serif)' }}>
+          <p style={{ fontSize: 14, color: 'var(--muted)', lineHeight: 1.7, marginBottom: 16, fontFamily: 'var(--font-inter, sans-serif)' }}>
             The Youth Prism is a genuinely global publication — with contributors from India, the UK, the US, Eastern Europe, Africa, and beyond.
           </p>
           <div style={{ display: 'flex', gap: 32 }}>
             {[['17+', 'Contributors'], ['10+', 'Countries'], ['5', 'Disciplines']].map(([num, label]) => (
               <div key={label}>
-                <span style={{ fontFamily: 'var(--font-playfair, Georgia, serif)', fontSize: 24, fontWeight: 700, color: C.midnight, display: 'block' }}>{num}</span>
-                <span style={{ fontSize: 10, textTransform: 'uppercase', letterSpacing: '0.16em', color: 'rgba(15,23,42,0.50)' }}>{label}</span>
+                <span style={{ fontFamily: 'var(--font-playfair, Georgia, serif)', fontSize: 24, fontWeight: 700, color: 'var(--foreground)', display: 'block' }}>{num}</span>
+                <span style={{ fontSize: 10, textTransform: 'uppercase', letterSpacing: '0.16em', color: 'var(--muted)' }}>{label}</span>
               </div>
             ))}
           </div>
@@ -218,40 +221,35 @@ export default function GlobalIntelligenceGlobe({ onSelectCountry }: GlobeProps)
       </div>
 
       {/* ── SVG World Map (country index + writer dots) ── */}
-      <div style={{ position: 'relative', width: '100%', borderRadius: 4, overflow: 'hidden', border: `0.5px solid rgba(15,23,42,0.08)` }}>
-        <svg
-          ref={svgRef}
-          viewBox={`0 0 ${W} ${H}`}
-          style={{ width: '100%', height: 'auto', display: 'block', maxHeight: 280 }}
-          preserveAspectRatio="xMidYMid slice"
+      <div className="glass" style={{ position: 'relative', width: '100%', borderRadius: 16, overflow: 'hidden', border: '1px solid rgba(255,255,255,0.05)', background: 'var(--card-bg)' }}>
+        <ComposableMap
+          projectionConfig={{ scale: 140 }}
+          width={800}
+          height={400}
+          style={{ width: "100%", height: "auto" }}
         >
-          <rect width={W} height={H} fill={C.cream} />
-
-          {/* Equator + prime meridian */}
-          <line x1={0} y1={H / 2} x2={W} y2={H / 2} stroke="rgba(11, 90, 71, 0.12)" strokeWidth={1} />
-          <line x1={W / 2} y1={0} x2={W / 2} y2={H} stroke="rgba(11, 90, 71, 0.10)" strokeWidth={1} />
-
-          {/* Country shapes */}
-          {COUNTRY_PATHS.map(({ id, d, highlight }) => {
-            const hasPinsInSector = pins.some(p => p.country.toLowerCase().includes(id.toLowerCase()) && (activeSector === 'all' || p.sector === activeSector));
-            return (
-              <path
-                key={id}
-                d={d}
-                fill={
-                  selectedCountry && id.toLowerCase().includes(selectedCountry.toLowerCase())
-                    ? 'rgba(255, 233, 161, 0.28)'
-                    : highlight && hasPinsInSector
-                      ? 'rgba(11, 90, 71, 0.14)'
-                      : 'rgba(11, 90, 71, 0.06)'
-                }
-                stroke="rgba(11, 90, 71, 0.22)"
-                strokeWidth={0.5}
-                style={{ cursor: 'pointer', transition: 'fill 0.2s ease' }}
-                onClick={() => handleCountryClick(id)}
-              />
-            );
-          })}
+          <Geographies geography={geoUrl}>
+            {({ geographies }) =>
+              geographies.map((geo) => {
+                const isSelected = selectedCountry && geo.properties.name.toLowerCase().includes(selectedCountry.toLowerCase());
+                return (
+                  <Geography
+                    key={geo.rsmKey}
+                    geography={geo}
+                    fill={isSelected ? "rgba(255, 233, 161, 0.28)" : "rgba(255,255,255,0.05)"}
+                    stroke="rgba(255,255,255,0.1)"
+                    strokeWidth={0.5}
+                    style={{
+                      default: { outline: "none" },
+                      hover: { fill: "rgba(255, 233, 161, 0.2)", outline: "none" },
+                      pressed: { outline: "none" },
+                    }}
+                    onClick={() => handleCountryClick(geo.properties.name)}
+                  />
+                );
+              })
+            }
+          </Geographies>
 
           {/* Arc connection lines between writer pins, filtered by active sector */}
           {[
@@ -260,18 +258,14 @@ export default function GlobalIntelligenceGlobe({ onSelectCountry }: GlobeProps)
             const pinA = DEFAULT_PINS[a];
             const pinB = DEFAULT_PINS[b];
             const active = activeSector === 'all' || pinA.sector === activeSector || pinB.sector === activeSector;
-            const [ax, ay] = project(pinA.lat, pinA.lng);
-            const [bx, by] = project(pinB.lat, pinB.lng);
-            const mx = (ax + bx) / 2;
-            const my = Math.min(ay, by) - 40;
             return (
-              <path
+              <Line
                 key={i}
-                d={`M${ax},${ay} Q${mx},${my} ${bx},${by}`}
-                fill="none"
-                stroke="rgba(11, 90, 71, 0.18)"
-                strokeWidth={0.8}
-                strokeDasharray="3,4"
+                from={[pinA.lng, pinA.lat]}
+                to={[pinB.lng, pinB.lat]}
+                stroke="rgba(255, 255, 255, 0.2)"
+                strokeWidth={1}
+                strokeDasharray="4,4"
                 style={{
                   opacity: active ? 1.0 : 0.15,
                   transition: 'opacity 0.2s ease',
@@ -282,29 +276,33 @@ export default function GlobalIntelligenceGlobe({ onSelectCountry }: GlobeProps)
 
           {/* Writer / Research / Origin dots, filtered/opacity-faded by active sector */}
           {pins.map((pin, i) => {
-            const [cx, cy] = project(pin.lat, pin.lng);
             const pulse = 1 + Math.sin(pulseAngle + i * 0.8) * 0.35;
             const col = dotColour(pin.type);
             const halo = haloColour(pin.type);
             const active = activeSector === 'all' || pin.sector === activeSector;
 
             return (
-              <g
+              <Marker
                 key={`${pin.name}-${i}`}
-                style={{
-                  cursor: 'pointer',
-                  opacity: active ? 1.0 : 0.15,
-                  transition: 'opacity 0.2s ease',
-                }}
+                coordinates={[pin.lng, pin.lat]}
                 onClick={() => handleCountryClick(pin.country)}
+                style={{
+                  default: {
+                    cursor: 'pointer',
+                    opacity: active ? 1.0 : 0.15,
+                    transition: 'opacity 0.2s ease',
+                  },
+                  hover: { cursor: 'pointer', opacity: active ? 1.0 : 0.15 },
+                  pressed: { cursor: 'pointer', opacity: active ? 1.0 : 0.15 },
+                }}
               >
                 <title>{pin.name} — {pin.country}</title>
-                <circle cx={cx} cy={cy} r={8 * pulse} fill={halo} />
-                <circle cx={cx} cy={cy} r={3.5} fill={col} />
-              </g>
+                <circle r={8 * pulse} fill={halo} />
+                <circle r={3.5} fill={col} />
+              </Marker>
             );
           })}
-        </svg>
+        </ComposableMap>
       </div>
 
       {/* ── Writer Strip (midnight cards) ── */}
@@ -343,7 +341,7 @@ export default function GlobalIntelligenceGlobe({ onSelectCountry }: GlobeProps)
           { col: C.tealText, label: 'Research Node' },
           { col: C.lavender, label: 'Origin / Source' },
         ].map(({ col, label }) => (
-          <div key={label} style={{ display: 'flex', alignItems: 'center', gap: 7, fontSize: 11, color: 'rgba(15,23,42,0.50)', fontFamily: 'var(--font-inter, sans-serif)' }}>
+          <div key={label} style={{ display: 'flex', alignItems: 'center', gap: 7, fontSize: 11, color: 'var(--muted)', fontFamily: 'var(--font-inter, sans-serif)' }}>
             <span style={{ width: 8, height: 8, borderRadius: '50%', background: col, display: 'inline-block', flexShrink: 0 }} />
             {label}
           </div>
