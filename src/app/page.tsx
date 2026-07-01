@@ -133,7 +133,9 @@ export default function Home() {
   });
 
   return (
-    <div className="min-h-screen flex flex-col paper-pattern bg-background text-foreground transition-colors duration-300">
+    <div className="min-h-screen flex flex-col bg-background text-foreground transition-colors duration-300 relative overflow-hidden">
+      <div className="aurora-bg" />
+      <div className="noise-bg" />
       <Navbar />
 
       {/* Dynamic Homepage Sections rendering based on database configuration */}
@@ -249,7 +251,7 @@ export default function Home() {
 
               case 'Newsroom':
                 return (
-                  <section key="newsroom" className="fade-up w-full py-12 bg-transparent border-b border-[rgba(255,255,255,0.08)] relative">
+                  <section key="newsroom" className="fade-up w-full py-12 bg-transparent relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-[1px] after:bg-gradient-to-r after:from-transparent after:via-white/10 after:to-transparent">
                     <div className="absolute inset-0 bg-[var(--background)] z-[-1]" />
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                       <LivingNewsroom />
@@ -259,7 +261,7 @@ export default function Home() {
 
               case 'Globe':
                 return (
-                  <section key="globe" className="fade-up w-full py-12 bg-transparent border-b border-[rgba(255,255,255,0.08)] relative">
+                  <section key="globe" className="fade-up w-full py-12 bg-transparent relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-[1px] after:bg-gradient-to-r after:from-transparent after:via-white/10 after:to-transparent">
                     <div className="absolute inset-0 bg-[var(--background)] z-[-1]" />
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                       <GlobalIntelligenceGlobe onSelectCountry={setSelectedCountry} />
@@ -269,7 +271,7 @@ export default function Home() {
 
               case 'Despatches':
                 return (
-                  <section key="despatches" className="fade-in w-full py-12 bg-transparent border-b border-[rgba(255,255,255,0.08)] relative">
+                  <section key="despatches" className="fade-in w-full py-12 bg-transparent relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-[1px] after:bg-gradient-to-r after:from-transparent after:via-white/10 after:to-transparent">
                     <div className="absolute inset-0 bg-[var(--background)] z-[-1]" />
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                       <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
@@ -405,7 +407,7 @@ export default function Home() {
 
               case 'Node Graph':
                 return (
-                  <section key="node-graph" className="fade-in w-full py-12 bg-transparent border-b border-[rgba(255,255,255,0.08)] relative">
+                  <section key="node-graph" className="fade-in w-full py-12 bg-transparent relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-[1px] after:bg-gradient-to-r after:from-transparent after:via-white/10 after:to-transparent">
                     <div className="absolute inset-0 bg-[var(--background)] z-[-1]" />
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6 relative z-10">
                       <div className="border-b border-white/10 pb-3">
@@ -418,7 +420,7 @@ export default function Home() {
 
               case 'Pathways':
                 return (
-                  <section key="pathways" className="fade-in bg-transparent border-b border-[rgba(255,255,255,0.08)] py-12 relative">
+                  <section key="pathways" className="fade-in bg-transparent py-12 relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-[1px] after:bg-gradient-to-r after:from-transparent after:via-white/10 after:to-transparent">
                     <div className="absolute inset-0 bg-[var(--background)] z-[-1]" />
                     <div className="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 space-y-6 relative z-10">
                       <div className="border-b border-white/10 pb-3">
@@ -431,7 +433,7 @@ export default function Home() {
 
               case 'Reports':
                 return (
-                  <section key="reports" className="fade-in w-full py-12 bg-transparent border-b border-[rgba(255,255,255,0.08)] relative">
+                  <section key="reports" className="fade-in w-full py-12 bg-transparent relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-[1px] after:bg-gradient-to-r after:from-transparent after:via-white/10 after:to-transparent">
                     <div className="absolute inset-0 bg-[var(--background)] z-[-1]" />
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6 relative z-10">
                       <div className="flex items-center justify-between border-b border-white/10 pb-3">
@@ -446,47 +448,50 @@ export default function Home() {
                       
                       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                         {/* Report 1 */}
-                        <div className="group flex bg-cream/80 border border-border/40 glass rounded-[32px] p-6 items-center gap-6 shadow-md hover:shadow-xl transition-all duration-300">
-                          <div className="w-24 h-32 flex-shrink-0 bg-gradient-to-br from-teal to-midnight2 border border-white/10 rounded-lg shadow-lg group-hover:scale-105 transition-transform duration-300 flex flex-col justify-between p-3 relative overflow-hidden">
-                            <span className="text-[6px] tracking-widest uppercase font-bold text-butter">TYP Publication</span>
-                            <span className="font-serif text-[10px] font-bold text-cream leading-tight tracking-tight mt-2 block">AI Governance & Sovereignty</span>
+                        <div className="group flex bg-card-bg/20 border border-border/40 glass rounded-[32px] p-6 items-center gap-6 shadow-md hover:shadow-xl transition-all duration-300 relative overflow-hidden">
+                          <div className="absolute inset-0 bg-gradient-to-br from-teal/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+                          <div className="w-24 h-32 flex-shrink-0 bg-gradient-to-br from-brand-teal to-brand-midnight2 border border-white/10 rounded-lg shadow-lg group-hover:scale-105 transition-transform duration-500 flex flex-col justify-between p-3 relative overflow-hidden">
+                            <span className="text-[6px] tracking-widest uppercase font-bold text-brand-butter">TYP Publication</span>
+                            <span className="font-serif text-[10px] font-bold text-foreground leading-tight tracking-tight mt-2 block">AI Governance & Sovereignty</span>
                             <span className="text-[6px] text-butter font-semibold mt-auto block">Annual Report 2026</span>
                           </div>
                           <div className="space-y-2 flex-1">
                             <span className="text-[9px] font-bold text-midnight tracking-widest uppercase bg-butter/90 px-2 py-0.5 rounded border border-butter/20">Special Edition</span>
-                            <h3 className="font-serif text-base font-bold text-midnight">The AI Sovereignty Report</h3>
-                            <p className="text-xs text-midnight/60 leading-relaxed line-clamp-2 font-sans font-medium">Exploring national regulatory models and the future of open-source models.</p>
-                            <Link href="/publications/issue-01" className="text-[10px] font-bold text-butter hover:text-cream hover:underline block pt-1 font-sans">Read Digital Issue &rarr;</Link>
+                            <h3 className="font-serif text-base font-bold text-foreground">The AI Sovereignty Report</h3>
+                            <p className="text-xs text-muted leading-relaxed line-clamp-2 font-sans font-medium">Exploring national regulatory models and the future of open-source models.</p>
+                            <Link href="/publications/issue-01" className="text-[10px] font-bold text-brand-butter hover:text-foreground hover:underline block pt-1 font-sans">Read Digital Issue &rarr;</Link>
                           </div>
                         </div>
 
                         {/* Report 2 */}
-                        <div className="group flex bg-cream/80 border border-border/40 glass rounded-[32px] p-6 items-center gap-6 shadow-md hover:shadow-xl transition-all duration-300">
-                          <div className="w-24 h-32 flex-shrink-0 bg-gradient-to-br from-cherry to-midnight2 border border-white/10 rounded-lg shadow-lg group-hover:scale-105 transition-transform duration-300 flex flex-col justify-between p-3 relative overflow-hidden">
-                            <span className="text-[6px] tracking-widest uppercase font-bold text-cream">TYP Publication</span>
-                            <span className="font-serif text-[10px] font-bold text-cream leading-tight tracking-tight mt-2 block">Healthcare Equity Systems</span>
+                        <div className="group flex bg-card-bg/20 border border-border/40 glass rounded-[32px] p-6 items-center gap-6 shadow-md hover:shadow-xl transition-all duration-300 relative overflow-hidden">
+                          <div className="absolute inset-0 bg-gradient-to-br from-cherry/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+                          <div className="w-24 h-32 flex-shrink-0 bg-gradient-to-br from-brand-cherry to-brand-midnight2 border border-white/10 rounded-lg shadow-lg group-hover:scale-105 transition-transform duration-500 flex flex-col justify-between p-3 relative overflow-hidden">
+                            <span className="text-[6px] tracking-widest uppercase font-bold text-foreground">TYP Publication</span>
+                            <span className="font-serif text-[10px] font-bold text-foreground leading-tight tracking-tight mt-2 block">Healthcare Equity Systems</span>
                             <span className="text-[6px] text-butter font-semibold mt-auto block">Policy Brief 2026</span>
                           </div>
                           <div className="space-y-2 flex-1">
                             <span className="text-[9px] font-bold text-cream tracking-widest uppercase bg-cherry/80 px-2 py-0.5 rounded border border-cherry/20">Policy Brief</span>
-                            <h3 className="font-serif text-base font-bold text-midnight">Vaccine Sovereignty</h3>
-                            <p className="text-xs text-midnight/60 leading-relaxed line-clamp-2 font-sans font-medium">Deconstructing global patent regimes and pharmaceutical distribution disparities.</p>
-                            <Link href="/publications/issue-02" className="text-[10px] font-bold text-butter hover:text-cream hover:underline block pt-1 font-sans">Read Digital Issue &rarr;</Link>
+                            <h3 className="font-serif text-base font-bold text-foreground">Vaccine Sovereignty</h3>
+                            <p className="text-xs text-muted leading-relaxed line-clamp-2 font-sans font-medium">Deconstructing global patent regimes and pharmaceutical distribution disparities.</p>
+                            <Link href="/publications/issue-02" className="text-[10px] font-bold text-brand-butter hover:text-foreground hover:underline block pt-1 font-sans">Read Digital Issue &rarr;</Link>
                           </div>
                         </div>
 
                         {/* Report 3 */}
-                        <div className="group flex bg-cream/80 border border-border/40 glass rounded-[32px] p-6 items-center gap-6 shadow-md hover:shadow-xl transition-all duration-300">
-                          <div className="w-24 h-32 flex-shrink-0 bg-gradient-to-br from-lavender/35 to-midnight2 border border-white/10 rounded-lg shadow-lg group-hover:scale-105 transition-transform duration-300 flex flex-col justify-between p-3 relative overflow-hidden">
-                            <span className="text-[6px] tracking-widest uppercase font-bold text-lavender">TYP Publication</span>
-                            <span className="font-serif text-[10px] font-bold text-cream leading-tight tracking-tight mt-2 block">Technology & Labor Markets</span>
+                        <div className="group flex bg-card-bg/20 border border-border/40 glass rounded-[32px] p-6 items-center gap-6 shadow-md hover:shadow-xl transition-all duration-300 relative overflow-hidden">
+                          <div className="absolute inset-0 bg-gradient-to-br from-lavender/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+                          <div className="w-24 h-32 flex-shrink-0 bg-gradient-to-br from-brand-lavender/35 to-brand-midnight2 border border-white/10 rounded-lg shadow-lg group-hover:scale-105 transition-transform duration-500 flex flex-col justify-between p-3 relative overflow-hidden">
+                            <span className="text-[6px] tracking-widest uppercase font-bold text-brand-lavender">TYP Publication</span>
+                            <span className="font-serif text-[10px] font-bold text-foreground leading-tight tracking-tight mt-2 block">Technology & Labor Markets</span>
                             <span className="text-[6px] text-butter font-semibold mt-auto block">Whitepaper 2025</span>
                           </div>
                           <div className="space-y-2 flex-1">
                             <span className="text-[9px] font-bold text-midnight tracking-widest uppercase bg-lavender/90 px-2 py-0.5 rounded border border-lavender/20">Whitepaper</span>
-                            <h3 className="font-serif text-base font-bold text-midnight">The Gig Work Paradigm</h3>
-                            <p className="text-xs text-midnight/60 leading-relaxed line-clamp-2 font-sans font-medium">Algorithmic labor management and collective rights in digital platforms.</p>
-                            <Link href="/publications/issue-01" className="text-[10px] font-bold text-butter hover:text-cream hover:underline block pt-1 font-sans">Read Digital Issue &rarr;</Link>
+                            <h3 className="font-serif text-base font-bold text-foreground">The Gig Work Paradigm</h3>
+                            <p className="text-xs text-muted leading-relaxed line-clamp-2 font-sans font-medium">Algorithmic labor management and collective rights in digital platforms.</p>
+                            <Link href="/publications/issue-01" className="text-[10px] font-bold text-brand-butter hover:text-foreground hover:underline block pt-1 font-sans">Read Digital Issue &rarr;</Link>
                           </div>
                         </div>
                       </div>
@@ -496,7 +501,7 @@ export default function Home() {
 
               case 'Voice':
                 return (
-                  <section key="voice" className="fade-up w-full py-16 bg-transparent border-b border-[rgba(255,255,255,0.08)] relative">
+                  <section key="voice" className="fade-up w-full py-16 bg-transparent relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-[1px] after:bg-gradient-to-r after:from-transparent after:via-white/10 after:to-transparent">
                     <div className="absolute inset-0 bg-[var(--background)] z-[-1]" />
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                       <section className="relative border border-[rgba(255,255,255,0.08)] bg-[rgba(255,255,255,0.03)] glass rounded-[32px] p-10 sm:p-16 overflow-hidden shadow-lg text-brand-cream grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
@@ -533,7 +538,7 @@ export default function Home() {
 
               case 'Opportunities':
                 return (
-                  <section key="opportunities" className="fade-in w-full py-12 bg-transparent border-b border-[rgba(255,255,255,0.08)] relative">
+                  <section key="opportunities" className="fade-in w-full py-12 bg-transparent relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-[1px] after:bg-gradient-to-r after:from-transparent after:via-white/10 after:to-transparent">
                     <div className="absolute inset-0 bg-[var(--background)] z-[-1]" />
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
@@ -668,7 +673,7 @@ export default function Home() {
 
               case 'Archive':
                 return (
-                  <section key="archive" className="fade-in w-full py-12 bg-transparent border-b border-[rgba(255,255,255,0.08)] relative">
+                  <section key="archive" className="fade-in w-full py-12 bg-transparent relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-[1px] after:bg-gradient-to-r after:from-transparent after:via-white/10 after:to-transparent">
                     <div className="absolute inset-0 bg-[var(--background)] z-[-1]" />
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                       <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">

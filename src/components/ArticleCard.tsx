@@ -80,8 +80,8 @@ export default function ArticleCard({ article, featured = false }: ArticleCardPr
 
   const MotionComponent = featured ? motion.div : motion.article;
 
-  // We use `hover-glow-prism` for the new aesthetic
-  const cardClassName = `group relative ${featured ? 'grid grid-cols-1 lg:grid-cols-12 gap-8 items-center p-6 lg:p-8' : 'flex flex-col h-full'} border border-[rgba(255,255,255,0.08)] bg-[rgba(10,10,10,0.5)] backdrop-blur-2xl rounded-[32px] overflow-hidden shadow-lg transition-colors hover-glow-prism`;
+  // We use the refined premium glassmorphism aesthetic
+  const cardClassName = `group relative ${featured ? 'grid grid-cols-1 lg:grid-cols-12 gap-8 items-center p-6 lg:p-8' : 'flex flex-col h-full'} border border-white/5 bg-card-bg/20 glass rounded-[32px] overflow-hidden shadow-lg transition-all duration-500 hover:shadow-2xl hover:border-white/20`;
 
   return (
     <MotionComponent
@@ -115,7 +115,7 @@ export default function ArticleCard({ article, featured = false }: ArticleCardPr
           className="absolute inset-0 z-0 pointer-events-none rounded-[32px]"
           style={{
             padding: '1px',
-            background: 'var(--prism-gradient)',
+            background: 'linear-gradient(115deg, rgba(11, 90, 71, 0.4), rgba(255, 233, 161, 0.2), transparent)',
             WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
             WebkitMaskComposite: 'xor',
             maskComposite: 'exclude',

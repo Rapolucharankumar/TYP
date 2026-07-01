@@ -59,7 +59,7 @@ export default function CustomCursor() {
       <motion.div
         className="fixed top-0 left-0 w-16 h-16 rounded-full pointer-events-none z-[99998]"
         style={{
-          background: 'radial-gradient(circle, rgba(255,255,255,0.8) 0%, rgba(0,255,170,0.4) 30%, rgba(170,0,255,0) 70%)',
+          background: 'radial-gradient(circle, rgba(255,255,255,0.3) 0%, rgba(11, 90, 71, 0.3) 30%, transparent 70%)',
           filter: 'blur(8px)',
           mixBlendMode: 'screen'
         }}

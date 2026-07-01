@@ -16,7 +16,7 @@ export default function PremiumHeroPrism() {
 
     // SCENE SETUP
     const scene = new THREE.Scene();
-    scene.fog = new THREE.FogExp2('#030303', 0.02);
+    scene.fog = new THREE.FogExp2('#05163B', 0.025);
 
     const camera = new THREE.PerspectiveCamera(
       45,
@@ -74,11 +74,11 @@ export default function PremiumHeroPrism() {
     };
 
     const lights = [
-      { obj: createLight(0xff0055, 50, 20), speed: 0.015, radius: 8, offset: 0 },
-      { obj: createLight(0xffaa00, 50, 20), speed: 0.02, radius: 7, offset: Math.PI * 0.5 },
-      { obj: createLight(0x00ffaa, 50, 20), speed: 0.018, radius: 9, offset: Math.PI },
-      { obj: createLight(0x0055ff, 50, 20), speed: 0.022, radius: 6, offset: Math.PI * 1.5 },
-      { obj: createLight(0xaa00ff, 50, 20), speed: 0.017, radius: 8, offset: Math.PI * 0.75 },
+      { obj: createLight(0x0B5A47, 40, 20), speed: 0.015, radius: 8, offset: 0 }, // Teal
+      { obj: createLight(0xFFE9A1, 30, 20), speed: 0.02, radius: 7, offset: Math.PI * 0.5 }, // Butter
+      { obj: createLight(0xF5F0E8, 25, 20), speed: 0.018, radius: 9, offset: Math.PI }, // Cream
+      { obj: createLight(0x05163B, 80, 25), speed: 0.012, radius: 6, offset: Math.PI * 1.5 }, // Midnight Blue glow
+      { obj: createLight(0x00FFAA, 30, 20), speed: 0.017, radius: 8, offset: Math.PI * 0.75 }, // Bright Teal highlight
     ];
 
     const ambientLight = new THREE.AmbientLight(0xffffff, 0.2);
@@ -86,7 +86,7 @@ export default function PremiumHeroPrism() {
 
     // DUST PARTICLES
     const particlesGeometry = new THREE.BufferGeometry();
-    const particlesCount = 300;
+    const particlesCount = 450;
     const posArray = new Float32Array(particlesCount * 3);
     for (let i = 0; i < particlesCount * 3; i++) {
       posArray[i] = (Math.random() - 0.5) * 25;
@@ -108,10 +108,10 @@ export default function PremiumHeroPrism() {
     const particleTexture = new THREE.CanvasTexture(canvas);
 
     const particlesMaterial = new THREE.PointsMaterial({
-      size: 0.15,
+      size: 0.08,
       map: particleTexture,
       transparent: true,
-      opacity: 0.6,
+      opacity: 0.4,
       blending: THREE.AdditiveBlending,
       depthWrite: false,
     });
@@ -175,12 +175,12 @@ export default function PremiumHeroPrism() {
         particlesMesh.rotation.x = elapsedTime * 0.01;
       }
 
-      // Mouse Parallax easing
-      mouseX += (targetX - mouseX) * 0.05;
-      mouseY += (targetY - mouseY) * 0.05;
+      // Mouse Parallax easing (smoother)
+      mouseX += (targetX - mouseX) * 0.03;
+      mouseY += (targetY - mouseY) * 0.03;
       
-      camera.position.x = mouseX * 2;
-      camera.position.y = -mouseY * 2;
+      camera.position.x = mouseX * 2.5;
+      camera.position.y = -mouseY * 2.5;
       camera.lookAt(scene.position);
 
       renderer.render(scene, camera);

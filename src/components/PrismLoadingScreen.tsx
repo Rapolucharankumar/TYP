@@ -22,7 +22,7 @@ export default function PrismLoadingScreen() {
           initial={{ opacity: 1 }}
           exit={{ opacity: 0, y: '-100%' }}
           transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
-          className="fixed inset-0 z-[100000] bg-black flex flex-col items-center justify-center overflow-hidden pointer-events-none"
+          className="fixed inset-0 z-[100000] bg-background flex flex-col items-center justify-center overflow-hidden pointer-events-none"
         >
           {/* Incoming White Beam */}
           <motion.div
@@ -50,7 +50,7 @@ export default function PrismLoadingScreen() {
             transition={{ duration: 1, delay: 1.2, ease: 'easeOut' }}
             className="absolute top-1/2 left-1/2 w-[50vw] h-[200px] origin-left -translate-y-1/2 pointer-events-none"
             style={{
-              background: 'linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,0,85,0.8) 20%, rgba(255,170,0,0.8) 40%, rgba(0,255,170,0.8) 60%, rgba(0,85,255,0.8) 80%, rgba(170,0,255,0.8) 100%)',
+              background: 'linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(11, 90, 71, 0.8) 25%, rgba(255, 233, 161, 0.8) 50%, rgba(255, 0, 85, 0.8) 75%, rgba(170, 0, 255, 0.8) 100%)',
               clipPath: 'polygon(0 48%, 100% 0%, 100% 100%, 0 52%)',
               filter: 'blur(12px)',
               mixBlendMode: 'screen'

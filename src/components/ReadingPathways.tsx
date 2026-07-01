@@ -105,7 +105,7 @@ export default function ReadingPathways() {
   const pathProgressPercent = (pathCompletedCount / activePath.steps.length) * 100;
 
   return (
-    <div className="bg-brand-midnight border border-brand-midnight2 p-6 sm:p-8 rounded-[32px] shadow-lg relative overflow-hidden">
+    <div className="bg-card-bg/20 glass border border-white/5 p-6 sm:p-8 rounded-[32px] shadow-lg relative overflow-hidden">
       
       {/* Decorative background grid */}
       <div className="absolute inset-0 bg-[linear-gradient(rgba(189,231,217,0.02)_1px,transparent_1px)] bg-[size:32px_32px] pointer-events-none" />
@@ -116,9 +116,9 @@ export default function ReadingPathways() {
         <div className="lg:col-span-4 space-y-4">
           <div className="flex items-center space-x-2.5">
             <Compass className="w-5 h-5 text-brand-butter" />
-            <h3 className="font-serif text-lg font-black text-brand-cream">Reading Pathways</h3>
+            <h3 className="font-serif text-lg font-black text-foreground">Reading Pathways</h3>
           </div>
-          <p className="text-xs text-brand-warmgrey leading-relaxed font-sans font-medium">
+          <p className="text-xs text-muted leading-relaxed font-sans font-medium">
             Explore complete intellectual systems rather than isolated articles. Select an editorial track below to begin your guided journey.
           </p>
 
@@ -137,8 +137,8 @@ export default function ReadingPathways() {
                   }}
                   className={`w-full text-left p-4 rounded-[20px] border transition-all flex flex-col justify-between ${
                     activePathId === path.id
-                      ? 'bg-brand-midnight2 border-brand-butter text-brand-cream shadow'
-                      : 'bg-brand-midnight2/50 border-brand-midnight3 text-brand-warmgrey hover:bg-brand-midnight2 hover:border-brand-butter/50 hover:text-brand-cream'
+                      ? 'bg-white/5 border-brand-butter text-foreground shadow-md'
+                      : 'bg-transparent border-white/5 text-muted hover:bg-white/5 hover:border-brand-butter/50 hover:text-foreground'
                   }`}
                 >
                   <div className="space-y-1">
@@ -148,7 +148,7 @@ export default function ReadingPathways() {
                       }`}>
                         {path.difficulty}
                       </span>
-                      <span className="text-[9px] font-sans font-bold text-brand-warmgrey">
+                      <span className="text-[9px] font-sans font-bold text-muted">
                         {path.steps.length} Chapters
                       </span>
                     </div>
@@ -161,15 +161,15 @@ export default function ReadingPathways() {
         </div>
 
         {/* Right Side: Step Progression Node List (8 cols) */}
-        <div className="lg:col-span-8 border border-brand-midnight3 bg-brand-midnight2/80 p-6 rounded-[24px] space-y-6">
+        <div className="lg:col-span-8 border border-white/10 bg-card-bg/40 glass p-6 rounded-[24px] space-y-6">
           
           {/* Pathway Header Status */}
-          <div className="flex flex-col sm:flex-row justify-between sm:items-center gap-4 pb-4 border-b border-brand-midnight3">
+          <div className="flex flex-col sm:flex-row justify-between sm:items-center gap-4 pb-4 border-b border-white/10">
             <div>
-              <h4 className="font-serif text-base font-bold text-brand-cream">
+              <h4 className="font-serif text-base font-bold text-foreground">
                 {activePath.title}
               </h4>
-              <p className="text-xs text-brand-warmgrey leading-relaxed font-sans font-medium mt-1">
+              <p className="text-xs text-muted leading-relaxed font-sans font-medium mt-1">
                 {activePath.description}
               </p>
             </div>
@@ -219,17 +219,17 @@ export default function ReadingPathways() {
                   {/* Step status node */}
                   <button 
                     onClick={(e) => toggleStepRead(step.slug, e)}
-                    className="absolute -left-[24px] top-1 z-10 p-0.5 rounded-full bg-brand-midnight border border-brand-midnight3 transition-colors hover:border-brand-butter"
+                    className="absolute -left-[24px] top-1 z-10 p-0.5 rounded-full bg-background border border-white/10 transition-colors hover:border-brand-butter"
                     title={isRead ? "Mark as unread" : "Mark as completed"}
                   >
                     {isRead ? (
                       <CheckCircle className="w-4 h-4 text-brand-butter fill-brand-butter/5" />
                     ) : (
-                      <Circle className="w-4 h-4 text-brand-warmgrey/45" />
+                      <Circle className="w-4 h-4 text-muted/45" />
                     )}
                   </button>
 
-                  <div className="flex-1 border border-brand-midnight3 hover:border-brand-butter/60 bg-brand-midnight2 rounded-2xl p-4 transition-all duration-300 relative group-hover:translate-x-1.5">
+                  <div className="flex-1 border border-white/10 hover:border-brand-butter/60 bg-white/5 rounded-2xl p-4 transition-all duration-300 relative group-hover:translate-x-1.5 glass">
                     <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                       <span className="text-[9px] uppercase tracking-widest font-black text-brand-butter">
                         Chapter {String(idx + 1).padStart(2, '0')} • {step.duration}
@@ -243,17 +243,17 @@ export default function ReadingPathways() {
                       )}
                     </div>
 
-                    <h5 className="font-serif text-sm sm:text-base font-bold text-brand-cream mt-2 leading-snug group-hover:text-brand-butter transition-colors">
+                    <h5 className="font-serif text-sm sm:text-base font-bold text-foreground mt-2 leading-snug group-hover:text-brand-butter transition-colors">
                       <Link href={`/articles/${step.slug}`}>
                         {step.title}
                       </Link>
                     </h5>
                     
-                    <p className="text-xs text-brand-warmgrey font-sans font-medium leading-relaxed mt-1 line-clamp-2">
+                    <p className="text-xs text-muted font-sans font-medium leading-relaxed mt-1 line-clamp-2">
                       {step.description}
                     </p>
 
-                    <div className="mt-3 pt-3 border-t border-brand-midnight3 flex items-center justify-between">
+                    <div className="mt-3 pt-3 border-t border-white/10 flex items-center justify-between">
                       <Link 
                         href={`/articles/${step.slug}`}
                         className="text-[10px] font-black text-brand-butter hover:underline uppercase tracking-widest flex items-center gap-1"
@@ -264,7 +264,7 @@ export default function ReadingPathways() {
                       {/* Toggle button */}
                       <button 
                         onClick={(e) => toggleStepRead(step.slug, e)}
-                        className="text-[10px] font-bold text-brand-warmgrey hover:text-brand-butter transition-colors"
+                        className="text-[10px] font-bold text-muted hover:text-brand-butter transition-colors"
                       >
                         {isRead ? 'Mark Active' : 'Mark Completed'}
                       </button>
